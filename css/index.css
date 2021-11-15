@@ -27,11 +27,19 @@ body {
     z-index: -1;
     width: 100%;
     height: 100vh;
-    background: url("../images/bg_2.jpg");
+    background: url("../images/index4.jpg");
     background-size: cover;
     background-attachment: fixed;
     top: 0;
     left: 0; }
+
+.cardBlur {
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2); }
+  @supports (backdrop-filter: blur(5px)) {
+    .cardBlur {
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      background-color: rgba(255, 255, 255, 0.9) !important; } }
 
 @font-face {
   font-family: 'BebasNeue';
@@ -160,7 +168,10 @@ body {
   font-size: 14px;
   line-height: 22px;
   opacity: 0.8;
-  color: #333; }
+  color: white;
+  opacity: 0.7; }
+  #footer a {
+    color: white; }
   #footer .copyright {
     float: right; }
   @media screen and (max-width: 800px) {
@@ -214,6 +225,9 @@ body {
       color: white; }
   .project-card > .ctnWrap {
     flex: 1; }
+    @media screen and (max-width: 600px) {
+      .project-card > .ctnWrap {
+        width: 100%; } }
     .project-card > .ctnWrap > .title {
       font-weight: 600;
       font-size: 28px;
@@ -224,12 +238,15 @@ body {
     .project-card > .ctnWrap > .desc {
       font-size: 16px;
       line-height: 30px;
-      margin-top: 20px;
-      margin-bottom: 15px; }
-    .project-card > .ctnWrap > .sub {
+      margin-top: 20px; }
+    .project-card > .ctnWrap > .subtitle {
       font-size: 16px;
+      margin: 10px 0; }
+    .project-card > .ctnWrap > .sub {
+      font-size: 14px;
       line-height: 30px;
-      opacity: .5; }
+      opacity: .5;
+      margin-top: 20px; }
   .project-card.project-card-continuous {
     flex-direction: row-reverse;
     margin: 0;
@@ -264,7 +281,10 @@ body {
         margin-left: 0;
         margin-right: 0;
         margin-bottom: 20px;
-        width: 100%; } }
+        width: 100%;
+        min-height: auto; }
+        .project-card > .imgWrap img {
+          min-height: auto; } }
 
 .article {
   margin: 64px 0 80px;
