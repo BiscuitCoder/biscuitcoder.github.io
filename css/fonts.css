@@ -12,6 +12,11 @@
   src: url("//at.alicdn.com/t/font_861369_9voy0xmnmvl.eot");
   src: url("//at.alicdn.com/t/font_861369_9voy0xmnmvl.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_861369_9voy0xmnmvl.woff") format("woff"), url("//at.alicdn.com/t/font_861369_9voy0xmnmvl.ttf") format("truetype"), url("//at.alicdn.com/t/font_861369_9voy0xmnmvl.svg#iconfont") format("svg"); }
 
+@font-face {
+  font-family: 'puhui';
+  /* project id 861369 */
+  src: url("../fonts/Alibaba-PuHuiTi-Regular.otf"); }
+
 .iconfont {
   font-family: "iconfont" !important;
   font-size: 16px;

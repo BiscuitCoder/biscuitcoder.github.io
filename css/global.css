@@ -5,4 +5,17 @@ a {
     opacity: .7; }
 
 body {
-  font-family: -apple-system, system-ui, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif; }
+  font-family: puhui,-apple-system, system-ui, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif;
+  min-height: 100vh;
+  position: relative; }
+  body::after {
+    content: '';
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    background: url("../images/bg_2.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    top: 0;
+    left: 0; }

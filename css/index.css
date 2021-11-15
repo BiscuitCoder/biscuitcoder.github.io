@@ -18,7 +18,20 @@ a {
     opacity: .7; }
 
 body {
-  font-family: -apple-system, system-ui, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif; }
+  font-family: puhui,-apple-system, system-ui, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif;
+  min-height: 100vh;
+  position: relative; }
+  body::after {
+    content: '';
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    background: url("../images/bg_2.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    top: 0;
+    left: 0; }
 
 @font-face {
   font-family: 'BebasNeue';
@@ -33,6 +46,11 @@ body {
   /* project id 861369 */
   src: url("//at.alicdn.com/t/font_861369_9voy0xmnmvl.eot");
   src: url("//at.alicdn.com/t/font_861369_9voy0xmnmvl.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_861369_9voy0xmnmvl.woff") format("woff"), url("//at.alicdn.com/t/font_861369_9voy0xmnmvl.ttf") format("truetype"), url("//at.alicdn.com/t/font_861369_9voy0xmnmvl.svg#iconfont") format("svg"); }
+
+@font-face {
+  font-family: 'puhui';
+  /* project id 861369 */
+  src: url("../fonts/Alibaba-PuHuiTi-Regular.otf"); }
 
 .iconfont {
   font-family: "iconfont" !important;
@@ -94,7 +112,11 @@ body {
         flex-direction: column; }
         #nav > .ctnWrap > .menu {
           text-align: center;
-          margin-top: 10px; } }
+          margin-top: 10px;
+          margin-bottom: 20px; }
+          #nav > .ctnWrap > .menu a {
+            display: inline-block;
+            margin: 0 15px; } }
   #nav .nav-menu {
     font-family: BebasNeue;
     font-size: 20px;
@@ -126,9 +148,12 @@ body {
   @media screen and (max-width: 600px) {
     #nav {
       text-align: center;
-      margin-bottom: 20px; }
+      margin-bottom: 20px;
+      display: block; }
       #nav > .ctnWrap {
-        justify-content: space-around; } }
+        justify-content: space-around; }
+      #nav > .header > .title {
+        font-size: 20px; } }
 
 #footer {
   margin-top: 80px;
@@ -149,7 +174,8 @@ body {
 .pagination {
   padding: 20px;
   background-color: white;
-  text-align: center; }
+  text-align: center;
+  border-radius: 10px; }
   .pagination > .prev, .pagination > .next {
     margin: 0 10px; }
   .pagination > .page-number {
@@ -169,7 +195,7 @@ body {
   .project-card > .imgWrap {
     width: 320px;
     margin-right: 40px;
-    background-color: #f8f8f8;
+    background-image: linear-gradient(#e9e9e9, #b7c9cf);
     min-height: 200px;
     border-radius: 10px;
     overflow: hidden; }
@@ -184,7 +210,8 @@ body {
       line-height: 200px;
       font-size: 100px;
       font-weight: bold;
-      opacity: 0.3; }
+      opacity: 0.8;
+      color: white; }
   .project-card > .ctnWrap {
     flex: 1; }
     .project-card > .ctnWrap > .title {
@@ -245,7 +272,8 @@ body {
   background-color: white;
   color: #333;
   font-size: 16px;
-  line-height: 30px; }
+  line-height: 30px;
+  border-radius: 10px; }
   .article > .title {
     font-size: 28px;
     line-height: 40px;
@@ -363,7 +391,9 @@ body {
 
 .archive {
   padding: 80px 160px;
-  background-color: white; }
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 20px; }
   @media screen and (max-width: 600px) {
     .archive {
       padding: 20px; } }
