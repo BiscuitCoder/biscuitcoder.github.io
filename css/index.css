@@ -432,8 +432,14 @@ body {
       .article > footer {
         padding: 10px 0; } }
 
+.articleCover {
+  display: block;
+  width: 100%;
+  margin: 20px auto;
+  border-radius: 10px; }
+
 .archive {
-  padding: 80px 160px;
+  padding: 80px;
   background-color: white;
   border-radius: 10px;
   margin-bottom: 20px; }
