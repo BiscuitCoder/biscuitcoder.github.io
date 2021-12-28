@@ -327,7 +327,11 @@ body {
     font-size: 14px; }
   .article > .content {
     padding-bottom: 64px; }
-    .article > .content h1, .article > .content h2, .article > .content h3, .article > .content h4, .article > .content h5 {
+    .article > .content h1,
+    .article > .content h2,
+    .article > .content h3,
+    .article > .content h4,
+    .article > .content h5 {
       font-size: 24px;
       font-weight: 600;
       line-height: 40px;
@@ -336,28 +340,36 @@ body {
       font-size: 16px;
       line-height: 30px;
       margin-bottom: 15px; }
-    .article > .content pre, .article > .content .highlight {
+    .article > .content pre,
+    .article > .content .highlight {
       overflow: auto;
       padding: 0;
       color: #333;
       font-size: 13px;
       background: #f8f8f8; }
-      .article > .content pre .gutter, .article > .content .highlight .gutter {
+      .article > .content pre .gutter,
+      .article > .content .highlight .gutter {
+        width: 50px;
         text-align: right; }
-        .article > .content pre .gutter pre, .article > .content .highlight .gutter pre {
+        .article > .content pre .gutter pre,
+        .article > .content .highlight .gutter pre {
           background-color: #f0f0f0;
           padding: 0 10px; }
-      .article > .content pre .code, .article > .content .highlight .code {
+      .article > .content pre .code,
+      .article > .content .highlight .code {
         padding: 0 10px; }
     .article > .content .highlight {
       margin-bottom: 15px; }
-    .article > .content ul, .article > .content ol {
+    .article > .content ul,
+    .article > .content ol {
       margin: 15px 0;
       margin-left: 15px; }
-      .article > .content ul > li, .article > .content ol > li {
+      .article > .content ul > li,
+      .article > .content ol > li {
         padding-left: 20px;
         position: relative; }
-        .article > .content ul > li::before, .article > .content ol > li::before {
+        .article > .content ul > li::before,
+        .article > .content ol > li::before {
           content: '';
           position: absolute;
           left: 0;
@@ -392,7 +404,6 @@ body {
       border-radius: 3px;
       font-size: 13px; }
     .article > .content table {
-      margin: 20px 0;
       width: 100%;
       border-collapse: collapse;
       border-spacing: 0;
@@ -403,12 +414,15 @@ body {
         background-color: #f9f9f9; }
       .article > .content table > tbody > tr:hover {
         background-color: #f5f5f5; }
-      .article > .content table caption, .article > .content table th, .article > .content table td {
+      .article > .content table caption,
+      .article > .content table th,
+      .article > .content table td {
         padding: 5px;
-        text-align: center;
+        text-align: left;
         vertical-align: middle;
         font-weight: normal; }
-      .article > .content table th, .article > .content table td {
+      .article > .content table th,
+      .article > .content table td {
         border-bottom: 3px solid #ddd;
         border-right: 1px solid #eee; }
       .article > .content table th {
