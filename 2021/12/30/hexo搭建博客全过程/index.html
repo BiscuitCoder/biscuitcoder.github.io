@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo搭建个人博客，过年回村儿得瑟！ | Biscuit Blog</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1"
+  >
+  <meta name="description" content="我的博客&gt;&gt;   大抵是又要过年了，横竖睡不着，半夜惊醒启动电脑，打开vscode让我一阵眩晕，振作精神仔细看了一阵，才从代码高亮中看出字来，满屏都闪现着：“买车、买房、压岁钱、月薪、七姑八姨、别人家…”这些字眼，后来我想，我大抵是病了，不轻的那种！  安装老规矩，先看 官网地址，里面啥都有，本文主要是描述一下流程，具体保姆级的操作，贴出相关文档自行查阅即可。 Hexo相较于Word">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo搭建个人博客，过年回村儿得瑟！">
+<meta property="og:url" content="https://haibinggan.gitee.io/2021/12/30/hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%85%A8%E8%BF%87%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Biscuit Blog">
+<meta property="og:description" content="我的博客&gt;&gt;   大抵是又要过年了，横竖睡不着，半夜惊醒启动电脑，打开vscode让我一阵眩晕，振作精神仔细看了一阵，才从代码高亮中看出字来，满屏都闪现着：“买车、买房、压岁钱、月薪、七姑八姨、别人家…”这些字眼，后来我想，我大抵是病了，不轻的那种！  安装老规矩，先看 官网地址，里面啥都有，本文主要是描述一下流程，具体保姆级的操作，贴出相关文档自行查阅即可。 Hexo相较于Word">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/haibinggan/static-image/raw/master/images/202112301742643.jpg">
+<meta property="article:published_time" content="2021-12-30T03:41:34.000Z">
+<meta property="article:modified_time" content="2021-12-30T09:53:32.602Z">
+<meta property="article:author" content="haibinggan">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="博客搭建">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/haibinggan/static-image/raw/master/images/202112301742643.jpg">
+  
+  <link
+    rel="icon"
+    href="/images/favicon.ico"
+  >
+  
+  <link
+    rel="stylesheet"
+    href="//cdn.bootcss.com/highlight.js/9.2.0/styles/github.min.css"
+  >
+  <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block);
+      });
+    });
+  </script>
+  
+<link rel="stylesheet" href="/css/index.css">
+
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/main.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body style="
+
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title"><b>🍪</b>&nbsp;<small>Biscuit Blog</small></a>
+  </header>
+  <div class="ctnWrap">
+    
+    <!-- <div class="icons">
+      
+        
+          
+            <a href="https://github.com/BiscuitCoder" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+      
+    </div> -->
+
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">🏠 首页</a>
+          
+        
+            <a href="/categories" class="nav-menu ">👀 分类</a>
+          
+        
+            <a href="/archives" class="nav-menu ">🗃️ 归档</a>
+          
+        
+            <a href="/navigation" class="nav-menu ">⚓ 链接们</a>
+          
+        
+            <a href="/about" class="nav-menu ">🤸 关于</a>
+          
+        
+      
+    </div>
+  </div>
+</nav>
+    <div id="main"><section class="article cardBlur">
+  <h2 class="title">Hexo搭建个人博客，过年回村儿得瑟！</h2>
+
+  <div class="tags">
+    
+      <a href="/tags/hexo" class="title"><small># hexo </small></a>
+    
+      <a href="/tags/博客搭建" class="title"><small># 博客搭建 </small></a>
+    
+  </div>
+
+  
+  <p class="sub">Thursday , 2021-12-30 11:41</p>
+
+  
+  <article class="content">
+
+    
+      <img class="articleCover" src="https://gitee.com/haibinggan/static-image/raw/master/images/202112301742643.jpg"/>
+     
+    
+    <blockquote>
+<p><a href="https://www.uyyu.xyz/" target="_blank" rel="noopener">我的博客&gt;&gt;</a></p>
+</blockquote>
+<blockquote>
+<p>大抵是又要过年了，横竖睡不着，半夜惊醒启动电脑，打开vscode让我一阵眩晕，振作精神仔细看了一阵，才从代码高亮中看出字来，满屏都闪现着：“买车、买房、压岁钱、月薪、七姑八姨、别人家…”这些字眼，后来我想，我大抵是病了，不轻的那种！</p>
+</blockquote>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>老规矩，先看 <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">官网地址</a>，里面啥都有，本文主要是描述一下流程，具体保姆级的操作，贴出相关文档自行查阅即可。</p>
+<p>Hexo相较于WordPress部署成本更小，主题库嘛还行，不过因为内容的限制，基本都比较同质化，当然自己可以二次开发，只要你忍得住写 <a href="https://ejs.bootcss.com/" target="_blank" rel="noopener">EJS</a> 的语法不抓狂，问题不大！</p>
+<p>前置条件，<a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node</a> 与 <a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a> ,相信有心搭建博客的老哥，这些都不用多说，全局安装一二。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>全局安装完成，直接创建项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init myHexoProject</span><br></pre></td></tr></table></figure>
+<p>如果报错可以尝试 <code>npx</code> ,npx的原理，就是在运行它时，执行下列流程：</p>
+<blockquote>
+<ol>
+<li>去<code>node_modules/.bin</code>路径检查npx后的命令是否存在，找到之后执行；</li>
+<li>找不到，就去环境变量<code>$PATH</code>里面，检查npx后的命令是否存在，找到之后执行;</li>
+<li>还是找不到，自动下载一个临时的依赖包最新版本在一个临时目录，然后再运行命令，运行完之后删除，不污染全局环境。</li>
+</ol>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npx hexo init myHexoProject</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd myHexoProject</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<p>安装完成，<code>npm run server</code> 就能在本地启动一个抽而实用的初始化项目</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9903312185054daf8b578146d01ad245~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<h1 id="书写"><a href="#书写" class="headerlink" title="书写"></a>书写</h1><p>现在你有了基础工具，心中的创作冲动已经安耐不住，此刻你韩寒，鲁迅，郭敬明，琼瑶，宁财神附体，感觉自己一篇文章下去，不说震动文坛，起码能引爆朋友圈吧。如果有这个骚年，想法请在评论区扣个1，我好知道是不是只有我这么不要脸！</p>
+<p>此时你要做的就是把你的想法显示在屏幕上，<code>layout</code> 默认是文章<code>post</code> 属性,如果你刚开始操作，不写也行，官方命令如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;eg:</span><br><span class="line">$ hexo new &quot;文坛新星冉冉升起！&quot;</span><br></pre></td></tr></table></figure>
+
+<p>此时你生成的文件将出现在 <code>source/_posts/文坛新星冉冉升起!.md</code> ，此时<code>全世界人民的老朋友Markdown语法</code>出现在你的面前，如同在三维进入跌落的四纬碎片，一切都变得透彻清晰了！Hexo就是通过<code>soure</code>里面的<code>.md</code>文件生成了对应的静态文件项目。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文坛新星冉冉升起！</span><br><span class="line">date: 2021-12-30 16:19:21</span><br><span class="line">tags:</span><br><span class="line"><span class="bullet">- </span>自定义标签1</span><br><span class="line"><span class="bullet">- </span>自定义标签2</span><br><span class="line">categories:</span><br><span class="line"><span class="bullet">- </span>分类1</span><br><span class="line"><span class="bullet">- </span>分类2</span><br><span class="line"></span><br><span class="line">这里写一些自己的内容</span><br><span class="line"></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>当然这只是最简单的创建方式，还有很多配置跟功能看 <a href="https://hexo.io/zh-cn/docs/writing" target="_blank" rel="noopener">官方文档</a></p>
+<h1 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h1><p>此时你的表达欲望已经被满足，但是作为一个上进的人，一个高级的人，一个脱离了低级审美趣味的人，这个默认主题界面，岂能入得了你的法眼？我们要想办法满足审美上的需求才行啊！！！这事儿耽搁不得。</p>
+<p>Hexo当然也有很多 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">社区主题</a> 供你选择，比如你打算临幸 <a href="https://github.com/dewjohn/hexo-theme-blank" target="_blank" rel="noopener">这个主题 https://github.com/dewjohn/hexo-theme-blank</a> ,一般开发者都会在下面写入常规配置及下载方式，主题目录在<code>themes/主题文件夹</code>,安装当前主题文件之后，在<code>_config.yml</code>文件中找到<code>themes：你的主题名称</code>,然后刷新一下，主题效果就已经呈现了。</p>
+<p>主题自己开发会比较麻烦，ejs的语法会让你比较抓狂，个人建议可以招一个比较符合需求的主题，配合Hexo的Api，做二次开发会比较省事儿。</p>
+<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><p>重点来了，目前你的博客在本地，只能你自己看，如果不能发出去装逼，那折腾个什么劲儿！于是我们要想办法部署出去，作为资深白嫖党，花钱买服务器是不可能的！</p>
+<p>此时你作为救世主的你，有两个选择：</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/943bbe711a3b48f2a4caeb777d8bf61c~tplv-k3u1fbpfcp-watermark.image?" alt="QQ截图20211230164230.png"></p>
+<blockquote>
+<p>首先是是码云 </p>
+</blockquote>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cd640986cd5c4b2a80975c23adb4f59c~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>国内码云可以配置gitee pages，但是现在需要实名认证，反正那啥，发文章就得悠着点儿，别该说不该说的都往上写，而且实测做个人域名转发是无法成功的，所以这个方式不太推荐，如果你想要比较快的国内访问速度，对域名跟内容都没啥特殊要求，也可以考虑！</p>
+<p><code>npm run build</code> 会执行 <code>hexo generate</code> 命令，在<code>public</code>下会生成最新的静态文件网站，page首页指向他即可，当然你可以直接<code>npm run deploy</code>直接部署，此时仓库只会上传<code>public</code>中的文件,部署配置在 <code>_config.yml</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  # 填上你自己的仓库名，注意后面有`.git`</span><br><span class="line">  repository: https:<span class="comment">//gitee.com//myname/xxxx.githup.io.git</span></span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/779ed5f40844461781bb0d8c26e80e43~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<blockquote>
+<p><strong>这里重点说一下github的部署</strong></p>
+</blockquote>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d211d16406764702ad780ca84a2d07d7~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>你需要新建一个公开仓库，这个仓库的名称必须是 <code>账户名.github.io</code> ，仓库完成后，我们将 <code>_config.yml</code>的<code>deploy</code>的<code>repository</code>配置为当前仓库名。</p>
+<p>此时你执行<code>npm run deploy</code>即可将当前重新生成的<code>public</code>静态站点上传到远程仓库，做如下配置即可</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/59223db5a5a24c7ba2240b8e579dfdee~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>部署加载完成后，理论上你就可以通过<code>账户名.github.io</code>访问到你的内容。</p>
+<p><strong>下面是付费内容，请谨慎阅读！</strong></p>
+<h1 id="域名自定义"><a href="#域名自定义" class="headerlink" title="域名自定义"></a>域名自定义</h1><p>至此，你已经拥有了自己的博客网站，但是总觉得差了点意思，对了，是域名，人家一看你这域名就暴露了，作为一个体面的博客，必须有一个自己的域名，我就是我，域名也要是不一样的烟火，烟毕，三思之后决定：氪金！</p>
+<p>遂可斥巨资在阿里云买了个域名 ，简单的实名验证后即可使用，现在的问题是如何通过这个域名访问<code>账户名.github.io</code></p>
+<p>打开域名管理，添加两条解析记录如下</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a607680b234340d4a2d1e4f5e07ae68d~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>然后在github设置中，设置自定义域名访问</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/01c56613ff174e26b577c1a8dd570e54~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/11ba7134b3ba460c924b63ebdbd65d0a~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"><br>完成后等待几分钟，应该就能通过域名正常访问了。</p>
+<h1 id="文章中的静态图片管理"><a href="#文章中的静态图片管理" class="headerlink" title="文章中的静态图片管理"></a>文章中的静态图片管理</h1><p>这里用到了PicGo，将文件上传到码云（比较快），然后引用，<a href="https://github.com/Molunerfinn/PicGo/releases" target="_blank" rel="noopener">git地址</a></p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/29fac5ee4c4e4104a536f9369f06e5f0~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>插件先下载gitee,</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/96e9ec0955c64995865e4e974e3bbd4d~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>在码云新建一个仓库<code>static-image</code>，上传配置如下</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2f0e5c6732da4be7afedbc024bbe7004~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5668c375be8d41689dfb7a0f74f005d3~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>在PicGo中按照所设置的内容配置即可，如下：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2a3b025ab4af41f3ae6a0900aa8a4cf0~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>完成之后，即可在相册看到当前传入的图片</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/915e9d4203184849ab94d24dceff42f7~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<h1 id="一些常见问题"><a href="#一些常见问题" class="headerlink" title="一些常见问题"></a>一些常见问题</h1><blockquote>
+<p>本地服务器跑的好好的，deploy上去各种主题样式混乱？</p>
+</blockquote>
+<p>可以尝试<code>npm run clean</code> 清除原文件后，在打包发布一次试试看！</p>
+<blockquote>
+<p>deploy之后是打包后的文件目录，我想同时保存源码怎么办？</p>
+</blockquote>
+<p>deploy的配置与项目的git配置是分开的，你可以重新建一个保存源码的项目用来保存更改，发布配置<code>账户名.github.io</code>的项目即可，这样能保证你随时可以在不同的设备拉下来项目发布新文章。</p>
+<blockquote>
+<p>为什么我每次deploy之后git的自定义域名就会失效，要重新配置怎么办？</p>
+</blockquote>
+<p>在<code>source</code>文件夹下新建<code>CNAME</code>文件，里面写入自定义域名即可，如下</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5a02a4def44e4cad937e89ddf2c469ed~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+
+  </article>
+  <footer class="f-cf">
+    
+    
+      <a href="/2021/12/28/%E3%80%8A%E8%AE%A9Bug%E9%A3%9E%E3%80%8B%E8%84%9A%E6%9C%AC/" class="link f-fr">《让Bug飞》脚本⟶</a>
+    
+  </footer>
+</section></div>
+    <footer id="footer" class="f-cf">
+  707463973@qq.com
+  
+    
+      
+        · <a href="https://github.com/BiscuitCoder" target="_blank" class="nav-icn">GitHub</a>
+      
+    
+  
+  <span class="copyright">All rights reserved @Biscuit Blog</span>
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+
+  <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1280589363'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1280589363%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+  
+</footer>
+  </div>
+</body>
+</html>
