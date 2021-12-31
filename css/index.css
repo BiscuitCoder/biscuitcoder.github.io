@@ -35,12 +35,13 @@ body {
 
 .cardBlur {
   border-radius: 10px;
+  background: white;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2); }
   @supports (backdrop-filter: blur(5px)) {
     .cardBlur {
       backdrop-filter: blur(5px);
       -webkit-backdrop-filter: blur(5px);
-      background-color: rgba(255, 255, 255, 0.9) !important; } }
+      background-color: rgba(255, 255, 255, 0.88) !important; } }
 
 .tags {
   padding: 5px 0; }
@@ -63,7 +64,7 @@ body {
   background: #e1e1e1;
   display: inline-block;
   border-radius: 8px;
-  padding: 2px; }
+  padding: 1px; }
   .cateTab a {
     display: inline-block;
     padding: 10px 25px;
@@ -144,7 +145,7 @@ body {
 
 @font-face {
   font-family: 'MaturaScriptCapitals';
-  src: url("/fonts/MaturaMTScriptCapitals.ttf"); }
+  src: url("/fonts/Maler.ttf"); }
 
 @font-face {
   font-family: 'iconfont';
@@ -231,7 +232,7 @@ body {
             margin: 10px; } }
   #nav .nav-menu {
     font-family: BebasNeue;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 24px;
     color: #333;
     margin-left: 50px; }
@@ -239,7 +240,7 @@ body {
       margin-left: 0; }
     #nav .nav-menu.z-active {
       position: relative;
-      font-weight: bold; }
+      font-size: 20px; }
       #nav .nav-menu.z-active::after {
         content: '';
         position: absolute;
@@ -302,15 +303,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px;
+  padding: 20px;
   margin: 40px 0;
-  background-color: white;
   color: #333;
   border-radius: 10px; }
   .project-card > .imgWrap {
     width: 320px;
     margin-right: 40px;
-    background-image: linear-gradient(#e9e9e9, #b7c9cf);
     min-height: 200px;
     border-radius: 10px;
     overflow: hidden; }
@@ -329,30 +328,41 @@ body {
       color: white; }
   .project-card > .ctnWrap {
     flex: 1; }
-    @media screen and (max-width: 600px) {
-      .project-card > .ctnWrap {
-        width: 100%; } }
+    .project-card > .ctnWrap:hover > .subtitle {
+      line-height: 1.6em; }
+    .project-card > .ctnWrap:hover > .title {
+      opacity: 1;
+      color: #2785ff; }
     .project-card > .ctnWrap > .title {
       font-weight: 600;
-      font-size: 28px;
-      line-height: 40px; }
-      .project-card > .ctnWrap > .title:hover {
-        opacity: 1;
-        color: #f0534e; }
+      font-size: 24px;
+      line-height: 1.3em;
+      margin-bottom: 10px;
+      display: block; }
     .project-card > .ctnWrap > .desc {
-      font-size: 16px;
+      font-size: 17px;
       line-height: 30px;
       margin-top: 20px; }
     .project-card > .ctnWrap > .subtitle {
-      font-size: 15px;
+      font-size: 12px;
       margin: 10px 0;
       line-height: 1.5em;
-      color: gray; }
+      color: gray;
+      opacity: 0.7;
+      transition: all 0.3s;
+      -webkit-transition: all 0.3s; }
     .project-card > .ctnWrap > .sub {
       font-size: 13px;
       line-height: 30px;
       opacity: .3;
       margin-top: 20px; }
+    @media screen and (max-width: 600px) {
+      .project-card > .ctnWrap {
+        width: 100%; }
+        .project-card > .ctnWrap > .title {
+          font-size: 18px; }
+        .project-card > .ctnWrap > .subtitle {
+          font-size: 12px; } }
   .project-card.project-card-continuous {
     flex-direction: row-reverse;
     margin: 0;
@@ -464,7 +474,7 @@ body {
           border-radius: 100%;
           background-color: #444; }
     .article > .content a {
-      color: #f0534e; }
+      color: #2785ff; }
     .article > .content strong {
       font-weight: 600; }
     .article > .content figure > img {
@@ -537,7 +547,7 @@ body {
   border-radius: 10px; }
 
 .archive {
-  padding: 80px;
+  padding: 40px 60px;
   background-color: white;
   border-radius: 10px;
   margin-bottom: 20px; }
@@ -561,7 +571,7 @@ body {
     line-height: 24px; }
     .archive-category > .menu > li > a:hover {
       opacity: 1;
-      color: #f0534e; }
+      color: #2785ff; }
     .archive-category > .menu > li > span {
       opacity: .45;
       font-size: 14px;
@@ -570,6 +580,20 @@ body {
 
 .archive-category:last-child > .menu {
   margin-bottom: 0; }
+
+@media screen and (max-width: 600px) {
+  .archive-category .menu {
+    margin-bottom: 40px; }
+    .archive-category .menu > li {
+      display: block;
+      margin-top: 20px; }
+      .archive-category .menu > li a {
+        font-size: 14px;
+        display: block; }
+      .archive-category .menu > li > span {
+        font-size: 12px;
+        display: block;
+        text-align: left; } }
 
 .about {
   background-color: white;
