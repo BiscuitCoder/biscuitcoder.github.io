@@ -18,7 +18,7 @@ a {
     opacity: .7; }
 
 body {
-  font-family: puhui,-apple-system, system-ui, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif;
+  font-family: puhui, -apple-system, system-ui, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif;
   min-height: 100vh;
   position: relative; }
   body::after {
@@ -53,6 +53,90 @@ body {
     padding: 5px 8px;
     margin-right: 10px;
     line-height: 1em; }
+
+.textRight {
+  text-align: right; }
+
+.cateTab {
+  text-align: right;
+  margin-bottom: 40px;
+  background: #e1e1e1;
+  display: inline-block;
+  border-radius: 8px;
+  padding: 2px; }
+  .cateTab a {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 8px;
+    margin: 2px;
+    color: #5e5e5e; }
+    .cateTab a.active {
+      background: white;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+      color: black; }
+
+.shortBox {
+  padding: 0 0; }
+  .shortBox .banner {
+    display: none; }
+  .shortBox .list {
+    margin-bottom: 40px;
+    cursor: pointer;
+    border-left: 8px solid rgba(0, 0, 0, 0.1);
+    padding-left: 20px;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s; }
+    .shortBox .list:hover {
+      border-color: #2785ff; }
+      .shortBox .list:hover .content {
+        font-weight: bold;
+        line-height: 1.9em; }
+    .shortBox .list .cover {
+      display: none; }
+    .shortBox .list .content {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 18px;
+      transition: all 0.3s;
+      -webkit-transition: all 0.3s; }
+    .shortBox .list .info .link,
+    .shortBox .list .info span {
+      font-size: 12px;
+      border-radius: 100px;
+      border: 1px solid;
+      padding: 0px 10px;
+      display: inline-block;
+      margin-right: 12px;
+      line-height: 2em;
+      color: #0f77f9;
+      border-color: #0f77f9;
+      background: rgba(15, 119, 249, 0.15);
+      transition: all 0.3s;
+      -webkit-transition: all 0.3s;
+      margin-bottom: 5px; }
+      .shortBox .list .info .link.link:hover,
+      .shortBox .list .info span.link:hover {
+        padding: 0 20px;
+        opacity: 1; }
+    .shortBox .list .info span:nth-child(1) {
+      color: #b176ff;
+      border-color: #b176ff;
+      background: rgba(177, 118, 255, 0.15); }
+    .shortBox .list .info span:nth-child(2) {
+      color: #20c7a0;
+      border-color: #20c7a0;
+      background: rgba(32, 199, 160, 0.15); }
+
+@media screen and (max-width: 600px) {
+  .shortBox .list:hover .content {
+    font-size: 14px;
+    font-weight: bold; }
+  .shortBox .list .content {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s; } }
 
 @font-face {
   font-family: 'BebasNeue';
