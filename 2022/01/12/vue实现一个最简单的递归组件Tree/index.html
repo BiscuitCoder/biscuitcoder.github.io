@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>vue实现一个最简单的递归组件Tree | Biscuit Blog</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1"
+  >
+  <meta name="description" content="递归组件最简单的理解就是：组件自己调用自己，不断循环到条件结束，最典型的应用就是树状图，以下记录一下最简单的实现过程。  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556&#x2F;&#x2F;demo.vue&lt;template&gt;  &lt;div">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue实现一个最简单的递归组件Tree">
+<meta property="og:url" content="https://haibinggan.gitee.io/2022/01/12/vue%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E9%80%92%E5%BD%92%E7%BB%84%E4%BB%B6Tree/index.html">
+<meta property="og:site_name" content="Biscuit Blog">
+<meta property="og:description" content="递归组件最简单的理解就是：组件自己调用自己，不断循环到条件结束，最典型的应用就是树状图，以下记录一下最简单的实现过程。  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556&#x2F;&#x2F;demo.vue&lt;template&gt;  &lt;div">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/haibinggan/static-image/raw/master/images/202201121751333.png">
+<meta property="article:published_time" content="2022-01-12T09:49:24.000Z">
+<meta property="article:modified_time" content="2022-01-12T09:51:45.105Z">
+<meta property="article:author" content="haibinggan">
+<meta property="article:tag" content="vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/haibinggan/static-image/raw/master/images/202201121751333.png">
+  
+  <link
+    rel="icon"
+    href="/images/favicon.ico"
+  >
+  
+  <link
+    rel="stylesheet"
+    href="//cdn.bootcss.com/highlight.js/9.2.0/styles/github.min.css"
+  >
+  <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block);
+      });
+    });
+  </script>
+  
+<link rel="stylesheet" href="/css/index.css">
+
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/main.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body style="
+
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title"><b>🍪</b>&nbsp;<small>Biscuit Blog</small></a>
+  </header>
+  <div class="ctnWrap">
+    
+    <!-- <div class="icons">
+      
+        
+          
+            <a href="https://github.com/BiscuitCoder" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+      
+    </div> -->
+
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">⛩️ 初始</a>
+          
+        
+            <a href="/short" class="nav-menu ">📻 拾遗</a>
+          
+        
+            <a href="/categories" class="nav-menu ">🗃️ 整理</a>
+          
+        
+            <a href="/navigation" class="nav-menu ">⚓ 链接们</a>
+          
+        
+            <a href="/about" class="nav-menu ">🤸 关于</a>
+          
+        
+      
+    </div>
+  </div>
+</nav>
+    <div id="main"><section class="article cardBlur">
+  <h2 class="title">vue实现一个最简单的递归组件Tree</h2>
+
+  <div class="tags">
+    
+      <a href="/tags/vue" class="title"><small># vue </small></a>
+    
+  </div>
+
+  
+  <p class="sub">Wednesday , 2022-1-12 17:49</p>
+
+  
+  <article class="content">
+
+    
+      <img class="articleCover" src="https://gitee.com/haibinggan/static-image/raw/master/images/202201121751333.png"/>
+     
+    
+    <blockquote>
+<p>递归组件最简单的理解就是：组件自己调用自己，不断循环到条件结束，最典型的应用就是树状图，以下记录一下最简单的实现过程。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//demo.vue</span></span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"home"</span>&gt;</span><br><span class="line">    &lt;Child v-<span class="keyword">for</span>=<span class="string">"(item, index) in treeData"</span> :data=<span class="string">"item"</span> :key=<span class="string">"index"</span>/&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">import</span> Child <span class="keyword">from</span> <span class="string">'./Child.vue'</span>;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        treeData: [&#123;</span><br><span class="line">          label: <span class="string">'一级 1'</span>,</span><br><span class="line">          children: [&#123;</span><br><span class="line">            label: <span class="string">'二级 1-1'</span>,</span><br><span class="line">            children: [&#123;</span><br><span class="line">              label: <span class="string">'三级 1-1-1'</span>,</span><br><span class="line">              children: [&#123;</span><br><span class="line">                label: <span class="string">'四级 1-1-1-1'</span></span><br><span class="line">              &#125;]</span><br><span class="line">            &#125;]</span><br><span class="line">          &#125;]</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">          label: <span class="string">'一级 2'</span>,</span><br><span class="line">          children: [&#123;</span><br><span class="line">            label: <span class="string">'二级 2-1'</span>,</span><br><span class="line">            children: [&#123;</span><br><span class="line">              label: <span class="string">'三级 2-1-1'</span></span><br><span class="line">            &#125;]</span><br><span class="line">          &#125;, &#123;</span><br><span class="line">            label: <span class="string">'二级 2-2'</span>,</span><br><span class="line">            children: [&#123;</span><br><span class="line">              label: <span class="string">'三级 2-2-1'</span></span><br><span class="line">            &#125;]</span><br><span class="line">          &#125;]</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">          label: <span class="string">'一级 3'</span>,</span><br><span class="line">          children: [&#123;</span><br><span class="line">            label: <span class="string">'二级 3-1'</span>,</span><br><span class="line">            children: [&#123;</span><br><span class="line">              label: <span class="string">'三级 3-1-1'</span></span><br><span class="line">            &#125;]</span><br><span class="line">          &#125;, &#123;</span><br><span class="line">            label: <span class="string">'二级 3-2'</span>,</span><br><span class="line">            children: [&#123;</span><br><span class="line">              label: <span class="string">'三级 3-2-1'</span></span><br><span class="line">            &#125;]</span><br><span class="line">          &#125;]</span><br><span class="line">        &#125;],</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//Child.vue</span></span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"box"</span>&gt;</span><br><span class="line">    &lt;b @click=<span class="string">"show=!show"</span>&gt;&#123;&#123;data.label&#125;&#125;&lt;<span class="regexp">/b&gt;</span></span><br><span class="line"><span class="regexp">    &lt;div class="item" v-show="show" v-if="data.children"&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Child v-for="(item,index) in data.children" :data="item" :key="index"/</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">  import Child from './</span>Child<span class="string">'</span></span><br><span class="line"><span class="string">  export default &#123;</span></span><br><span class="line"><span class="string">    name:"Child", //这里注意组件名要定义，才能递归引用</span></span><br><span class="line"><span class="string">    props:['</span>data<span class="string">'],</span></span><br><span class="line"><span class="string">    data() &#123;</span></span><br><span class="line"><span class="string">      return &#123;</span></span><br><span class="line"><span class="string">        show:false</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>简单的实现了点击隐藏显示的功能，实现后大概的效果如下：</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/69d7032849cf46caac733e4ffe8340fe~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>可扩展的点还是很多，比如异步请求加载，禁用启用之类的，都可以在这个基础上加入。</p>
+
+  </article>
+  <footer class="f-cf">
+    
+    
+      <a href="/2022/01/11/%E5%B0%91%E8%BE%A3%EF%BC%8C%E5%B0%91%E8%BE%A3%EF%BC%81/" class="link f-fr">少辣，少辣！⟶</a>
+    
+  </footer>
+</section></div>
+    <footer id="footer" class="f-cf">
+  707463973@qq.com
+  
+    
+      
+        · <a href="https://github.com/BiscuitCoder" target="_blank" class="nav-icn">GitHub</a>
+      
+    
+  
+  <span class="copyright">All rights reserved @Biscuit Blog</span>
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+
+  <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1280589363'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1280589363%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+  
+</footer>
+  </div>
+</body>
+</html>
