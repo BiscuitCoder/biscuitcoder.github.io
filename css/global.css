@@ -40,7 +40,8 @@ body {
     border-radius: 4px;
     padding: 5px 8px;
     margin-right: 10px;
-    line-height: 1em; }
+    line-height: 1em;
+    margin-bottom: 5px; }
 
 .textRight {
   text-align: right; }
@@ -115,6 +116,10 @@ body {
       color: #20c7a0;
       border-color: #20c7a0;
       background: rgba(32, 199, 160, 0.15); }
+    .shortBox .list .info span:nth-child(3) {
+      color: #cc3dc0;
+      border-color: #cc3dc0;
+      background: rgba(204, 61, 192, 0.15); }
   .shortBox .shortImages {
     display: flex;
     flex-wrap: wrap;
@@ -146,7 +151,7 @@ body {
   .shortBox .list .info span {
     font-size: 10px; }
   .shortBox .shortImages img {
-    width: 100px;
+    width: 42%;
     height: 50px;
     margin: 5px;
     border-radius: 4px; }
