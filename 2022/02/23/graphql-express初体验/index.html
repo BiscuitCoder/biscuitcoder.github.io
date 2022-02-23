@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>graphql+express初体验 | Biscuit Blog</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1"
+  >
+  <meta name="description" content="无眠的夜晚你寂寞吗？额…不好意思走错片场了。 我们在项目中经常会遇到一个后端同时为多个客户端提供api的情况，老规矩都是resetfulApi规范。 但是自古以来有人的地方就有江湖，有规范就有不规范的时候出现，由于各端（pc\h5\ios\Android…）的业务情况跟组件拆分不同，对数据结构各不相同，这轻则会导致冗余数据的产生，重则可能会导致前后端的流血冲突，届时场面将难解难分，一度失控….">
+<meta property="og:type" content="article">
+<meta property="og:title" content="graphql+express初体验">
+<meta property="og:url" content="https://haibinggan.gitee.io/2022/02/23/graphql-express%E5%88%9D%E4%BD%93%E9%AA%8C/index.html">
+<meta property="og:site_name" content="Biscuit Blog">
+<meta property="og:description" content="无眠的夜晚你寂寞吗？额…不好意思走错片场了。 我们在项目中经常会遇到一个后端同时为多个客户端提供api的情况，老规矩都是resetfulApi规范。 但是自古以来有人的地方就有江湖，有规范就有不规范的时候出现，由于各端（pc\h5\ios\Android…）的业务情况跟组件拆分不同，对数据结构各不相同，这轻则会导致冗余数据的产生，重则可能会导致前后端的流血冲突，届时场面将难解难分，一度失控….">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/haibinggan/static-image/raw/master/images/202202231620546.png">
+<meta property="article:published_time" content="2022-02-23T08:13:36.000Z">
+<meta property="article:modified_time" content="2022-02-23T08:21:38.986Z">
+<meta property="article:author" content="haibinggan">
+<meta property="article:tag" content="express">
+<meta property="article:tag" content="graphql">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/haibinggan/static-image/raw/master/images/202202231620546.png">
+  
+  <link
+    rel="icon"
+    href="/images/favicon.ico"
+  >
+  
+  <link
+    rel="stylesheet"
+    href="//cdn.bootcss.com/highlight.js/9.2.0/styles/github.min.css"
+  >
+  <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block);
+      });
+    });
+  </script>
+  
+<link rel="stylesheet" href="/css/index.css">
+
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/main.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body style="
+
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title"><b>🍪</b>&nbsp;<small>Biscuit Blog</small></a>
+  </header>
+  <div class="ctnWrap">
+    
+    <!-- <div class="icons">
+      
+        
+          
+            <a href="https://github.com/BiscuitCoder" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+      
+    </div> -->
+
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">
+              <i>⛩️</i>&nbsp;<span>初始</span>
+            </a>
+          
+        
+            <a href="/short" class="nav-menu ">
+              <i>📻</i>&nbsp;<span>拾遗</span>
+            </a>
+          
+        
+            <a href="/categories" class="nav-menu ">
+              <i>🗃️</i>&nbsp;<span>整理</span>
+            </a>
+          
+        
+            <a href="/navigation" class="nav-menu ">
+              <i>⚓</i>&nbsp;<span>链接们</span>
+            </a>
+          
+        
+            <a href="/about" class="nav-menu ">
+              <i>🤸</i>&nbsp;<span>关于</span>
+            </a>
+          
+        
+      
+    </div>
+  </div>
+</nav>
+    <div id="main"><section class="article cardBlur">
+  <h2 class="title">graphql+express初体验</h2>
+
+  <div class="tags">
+    
+      <a href="/tags/express" class="title"><small># express </small></a>
+    
+      <a href="/tags/graphql" class="title"><small># graphql </small></a>
+    
+  </div>
+
+  
+  <p class="sub">Wednesday , 2022-2-23 16:13</p>
+
+  
+  <article class="content">
+
+    
+      <img class="articleCover" src="https://gitee.com/haibinggan/static-image/raw/master/images/202202231620546.png"/>
+     
+    
+    <hr>
+<blockquote>
+<p>无眠的夜晚你寂寞吗？额…不好意思走错片场了。</p>
+<p>我们在项目中经常会遇到一个后端同时为多个客户端提供api的情况，老规矩都是resetfulApi规范。</p>
+<p>但是自古以来有人的地方就有江湖，有规范就有不规范的时候出现，由于各端（pc\h5\ios\Android…）的业务情况跟组件拆分不同，对数据结构各不相同，这轻则会导致冗余数据的产生，重则可能会导致前后端的流血冲突，届时场面将难解难分，一度失控….</p>
+<p>诶，这里就有俏皮的同学要问了，那怎么办呢？就没有让大家各自按时下班，岁月静好，共建和谐社会，实现共同富裕的方案了吗？</p>
+<p>诶，还真有的！</p>
+<p>graphql 就是一个api查询语言，目前的理解大概就是后端通过它将所有的数据的返回控制器定义好，客户端通过 <a href="http://xxxxx/graphql" target="_blank" rel="noopener">http://xxxxx/graphql</a> 自定义字段去查询，就这一个接口给你折腾，想要啥自己取。</p>
+<p>这么说吧：</p>
+<p>resetfulApi的模式：相当于食堂排队打饭，吃包子有吃包子的窗口，吃凉菜有吃凉菜的窗口，你要通过指定的窗口才能拿到对应的菜，而且你想吃的凉菜里面的香菜你不喜欢，不能摘出来，别问，问食堂阿姨就会对你正色说道：不行，这就是王八的屁股-规定！</p>
+<p>graphql模式：相当于是自助餐，没有窗口限制，要啥你自己拿，拿多拿少，怎么搭配服务员不管，不喜欢香菜就摘出来，想加大蒜就自己加。</p>
+</blockquote>
+<p><a href="https://graphql.cn/" target="_blank" rel="noopener">官网地址</a></p>
+<p>目前还处于了解学习阶段，以下是将graphql作为express中间件的demo：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save express graphql express-graphql</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建main.js</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">3000</span></span><br><span class="line"><span class="keyword">const</span> &#123; graphqlHTTP &#125; = <span class="built_in">require</span>(<span class="string">'express-graphql'</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; buildSchema &#125; = <span class="built_in">require</span>(<span class="string">'graphql'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> schema = buildSchema(<span class="string">`</span></span><br><span class="line"><span class="string">    type Query &#123;</span></span><br><span class="line"><span class="string">        hello:String</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">`</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> root = &#123;</span><br><span class="line">    hello:<span class="function"><span class="params">()</span>=&gt;</span><span class="string">`hello world`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    res.send(<span class="string">'this is express + graphql test project!'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/graphql'</span>, graphqlHTTP(&#123;</span><br><span class="line">    schema: schema,</span><br><span class="line">    rootValue:root,</span><br><span class="line">    graphiql: <span class="literal">true</span> <span class="comment">//开启调试工具</span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line">app.listen(port, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Example app listening on port <span class="subst">$&#123;port&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node main</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://localhost:3000/graphql" target="_blank" rel="noopener">http://localhost:3000/graphql</a> 可以看到调试界面，展开‘doc’可以看到当前定义的字段，都是些常规操作没啥好说的。</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e4f7511c4d534c9c855ed3851d5cc30c~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>持续踩坑更新中….</p>
+
+  </article>
+  <footer class="f-cf">
+    
+    
+      <a href="/2022/02/22/%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%20typescript+vue3+pinia%20%E8%B7%B3%E5%9D%91%E6%89%8B%E8%AE%B0/" class="link f-fr">持续更新 typescript+vue3+pinia 跳坑手记⟶</a>
+    
+  </footer>
+</section></div>
+    <footer id="footer" class="f-cf">
+  707463973@qq.com
+  
+    
+      
+        · <a href="https://github.com/BiscuitCoder" target="_blank" class="nav-icn">GitHub</a>
+      
+    
+  
+  <span class="copyright">All rights reserved @Biscuit Blog</span>
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+
+  <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1280589363'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1280589363%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+  
+</footer>
+  </div>
+</body>
+</html>
