@@ -20,6 +20,10 @@ body {
     top: 0;
     left: 0; }
 
+@media screen and (max-width: 600px) {
+  body::after {
+    background-position: center; } }
+
 .cardBlur {
   border-radius: 10px;
   background: white;

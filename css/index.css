@@ -33,6 +33,10 @@ body {
     top: 0;
     left: 0; }
 
+@media screen and (max-width: 600px) {
+  body::after {
+    background-position: center; } }
+
 .cardBlur {
   border-radius: 10px;
   background: white;
@@ -357,6 +361,7 @@ body {
       width: 100%;
       height: auto;
       min-height: 200px;
+      max-height: 280px;
       display: block; }
     .project-card > .imgWrap b {
       display: block;
