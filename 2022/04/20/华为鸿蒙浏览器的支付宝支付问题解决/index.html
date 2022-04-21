@@ -9,16 +9,16 @@
     name="viewport"
     content="width=device-width, initial-scale=1, maximum-scale=1"
   >
-  <meta name="description" content="theme: vue-pro事情是这样的，现在的vue3+ts项目需要用到支付宝支付，支付的方式都很简单，就是获取form表单然后提交即可，但是在鸿蒙的自带浏览器中出现了诡异的情况，主要表现在  在支付表单提交后，点击返回，页面不会有任何刷新（其他的手机浏览器是会重新加载），这样也就监听不到生命周期中的任何函数，对于程序来说，就好像这次跳转根本不存在，这还不是最离谱的！ 当我从支付页面返回到首页">
+  <meta name="description" content="事情是这样的，现在的vue3+ts项目需要用到支付宝支付，支付的方式都很简单，就是获取form表单然后提交即可，但是在鸿蒙的自带浏览器中出现了诡异的情况，主要表现在  在支付表单提交后，点击返回，页面不会有任何刷新（其他的手机浏览器是会重新加载），这样也就监听不到生命周期中的任何函数，对于程序来说，就好像这次跳转根本不存在，这还不是最离谱的！ 当我从支付页面返回到首页，这个时候变换支付参数再去发起">
 <meta property="og:type" content="article">
 <meta property="og:title" content="华为鸿蒙浏览器的支付宝支付问题解决">
 <meta property="og:url" content="https://haibinggan.gitee.io/2022/04/20/%E5%8D%8E%E4%B8%BA%E9%B8%BF%E8%92%99%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%94%AF%E4%BB%98%E5%AE%9D%E6%94%AF%E4%BB%98%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/index.html">
 <meta property="og:site_name" content="Biscuit Blog">
-<meta property="og:description" content="theme: vue-pro事情是这样的，现在的vue3+ts项目需要用到支付宝支付，支付的方式都很简单，就是获取form表单然后提交即可，但是在鸿蒙的自带浏览器中出现了诡异的情况，主要表现在  在支付表单提交后，点击返回，页面不会有任何刷新（其他的手机浏览器是会重新加载），这样也就监听不到生命周期中的任何函数，对于程序来说，就好像这次跳转根本不存在，这还不是最离谱的！ 当我从支付页面返回到首页">
+<meta property="og:description" content="事情是这样的，现在的vue3+ts项目需要用到支付宝支付，支付的方式都很简单，就是获取form表单然后提交即可，但是在鸿蒙的自带浏览器中出现了诡异的情况，主要表现在  在支付表单提交后，点击返回，页面不会有任何刷新（其他的手机浏览器是会重新加载），这样也就监听不到生命周期中的任何函数，对于程序来说，就好像这次跳转根本不存在，这还不是最离谱的！ 当我从支付页面返回到首页，这个时候变换支付参数再去发起">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://haibinggan.gitee.io/images/static-image/20220420180633.png">
 <meta property="article:published_time" content="2022-04-20T10:05:15.000Z">
-<meta property="article:modified_time" content="2022-04-20T10:07:11.495Z">
+<meta property="article:modified_time" content="2022-04-21T07:48:58.802Z">
 <meta property="article:author" content="haibinggan">
 <meta property="article:tag" content="HarmonyOS">
 <meta property="article:tag" content="支付">
@@ -128,8 +128,7 @@
       <img class="articleCover" src="/images/static-image/20220420180633.png"/>
      
     
-    <hr>
-<h2 id="theme-vue-pro"><a href="#theme-vue-pro" class="headerlink" title="theme: vue-pro"></a>theme: vue-pro</h2><p>事情是这样的，现在的vue3+ts项目需要用到支付宝支付，支付的方式都很简单，就是获取form表单然后提交即可，但是在鸿蒙的自带浏览器中出现了诡异的情况，主要表现在</p>
+    <p>事情是这样的，现在的vue3+ts项目需要用到支付宝支付，支付的方式都很简单，就是获取form表单然后提交即可，但是在鸿蒙的自带浏览器中出现了诡异的情况，主要表现在</p>
 <ul>
 <li>在支付表单提交后，点击返回，页面不会有任何刷新（其他的手机浏览器是会重新加载），这样也就监听不到生命周期中的任何函数，对于程序来说，就好像这次跳转根本不存在，这还不是最离谱的！</li>
 <li>当我从支付页面返回到首页，这个时候变换支付参数再去发起表单提交，华为的自带浏览器居然没用重新加载，还是用的之前的表单提交，导致买的品类还是之前的订单。这就离了大谱了！！！</li>
@@ -154,6 +153,8 @@
 
   </article>
   <footer class="f-cf">
+    
+      <a href="/2022/04/21/Design%E7%9A%84table%E7%BB%84%E4%BB%B6%E7%9A%84hook%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/" class="link f-fl">⟵Design的table组件的hook二次封装</a>
     
     
       <a href="/2022/04/15/%E6%97%B6%E4%BB%A3%E5%9C%A8%E5%8F%AC%E5%94%A4/" class="link f-fr">时代在召唤⟶</a>
