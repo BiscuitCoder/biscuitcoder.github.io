@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0662d14d68b26e231e240a65105f5b4e";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>华为鸿蒙浏览器的支付宝支付问题解决 | Biscuit Blog</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1"
+  >
+  <meta name="description" content="事情是这样的，现在的vue3+ts项目需要用到支付宝支付，支付的方式都很简单，就是获取form表单然后提交即可，但是在鸿蒙的自带浏览器中出现了诡异的情况，主要表现在  在支付表单提交后，点击返回，页面不会有任何刷新（其他的手机浏览器是会重新加载），这样也就监听不到生命周期中的任何函数，对于程序来说，就好像这次跳转根本不存在，这还不是最离谱的！ 当我从支付页面返回到首页，这个时候变换支付参数再去发起">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华为鸿蒙浏览器的支付宝支付问题解决">
+<meta property="og:url" content="https://haibinggan.gitee.io/2022/04/20/%E5%8D%8E%E4%B8%BA%E9%B8%BF%E8%92%99%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%94%AF%E4%BB%98%E5%AE%9D%E6%94%AF%E4%BB%98%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/index.html">
+<meta property="og:site_name" content="Biscuit Blog">
+<meta property="og:description" content="事情是这样的，现在的vue3+ts项目需要用到支付宝支付，支付的方式都很简单，就是获取form表单然后提交即可，但是在鸿蒙的自带浏览器中出现了诡异的情况，主要表现在  在支付表单提交后，点击返回，页面不会有任何刷新（其他的手机浏览器是会重新加载），这样也就监听不到生命周期中的任何函数，对于程序来说，就好像这次跳转根本不存在，这还不是最离谱的！ 当我从支付页面返回到首页，这个时候变换支付参数再去发起">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://haibinggan.gitee.io/images/static-image/20220420180633.png">
+<meta property="article:published_time" content="2022-04-20T10:05:15.000Z">
+<meta property="article:modified_time" content="2022-11-12T12:49:47.693Z">
+<meta property="article:author" content="haibinggan">
+<meta property="article:tag" content="HarmonyOS">
+<meta property="article:tag" content="支付">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://haibinggan.gitee.io/images/static-image/20220420180633.png">
+  
+  <link
+    rel="icon"
+    href="/images/favicon.ico"
+  >
+  
+  <link
+    rel="stylesheet"
+    href="//cdn.bootcss.com/highlight.js/9.2.0/styles/github.min.css"
+  >
+  <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block);
+      });
+    });
+  </script>
+  
+<link rel="stylesheet" href="/css/index.css">
+
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/main.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body style="
+
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title"><b>🍪</b>&nbsp;<small>Biscuit Blog</small></a>
+  </header>
+  <div class="ctnWrap">
+    
+    <!-- <div class="icons">
+      
+        
+          
+            <a href="https://github.com/BiscuitCoder" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+      
+    </div> -->
+
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">
+              <i>⛩️</i>&nbsp;<span>初始</span>
+            </a>
+          
+        
+            <a href="/short" class="nav-menu ">
+              <i>📻</i>&nbsp;<span>拾遗</span>
+            </a>
+          
+        
+            <a href="/categories" class="nav-menu ">
+              <i>🗃️</i>&nbsp;<span>整理</span>
+            </a>
+          
+        
+            <a href="/navigation" class="nav-menu ">
+              <i>⚓</i>&nbsp;<span>链接们</span>
+            </a>
+          
+        
+            <a href="/about" class="nav-menu ">
+              <i>🤸</i>&nbsp;<span>关于</span>
+            </a>
+          
+        
+      
+    </div>
+  </div>
+</nav>
+    <div id="main"><section class="article cardBlur">
+  <h2 class="title">华为鸿蒙浏览器的支付宝支付问题解决</h2>
+
+  <div class="tags">
+    
+      <a href="/tags/HarmonyOS" class="title"><small># HarmonyOS </small></a>
+    
+      <a href="/tags/支付" class="title"><small># 支付 </small></a>
+    
+  </div>
+
+  
+  <p class="sub">Wednesday , 2022-4-20 18:05</p>
+
+  
+  <article class="content">
+
+    
+      <img class="articleCover" src="/images/static-image/20220420180633.png"/>
+     
+    
+    <p>事情是这样的，现在的vue3+ts项目需要用到支付宝支付，支付的方式都很简单，就是获取form表单然后提交即可，但是在鸿蒙的自带浏览器中出现了诡异的情况，主要表现在</p>
+<ul>
+<li>在支付表单提交后，点击返回，页面不会有任何刷新（其他的手机浏览器是会重新加载），这样也就监听不到生命周期中的任何函数，对于程序来说，就好像这次跳转根本不存在，这还不是最离谱的！</li>
+<li>当我从支付页面返回到首页，这个时候变换支付参数再去发起表单提交，华为的自带浏览器居然没用重新加载，还是用的之前的表单提交，导致买的品类还是之前的订单。这就离了大谱了！！！</li>
+</ul>
+<p>机智如我，先是尝试了生命周期的调试，无效，根本没有任何反应，遂放弃！</p>
+<p>于是我先，如果判断华为浏览器，然后将表单的<code>target=_blank</code>在新页面打开呢？</p>
+<p>嘿，结果您猜怎么着？这个属性华为浏览器直接没反应，诶，就是雷打不动…..</p>
+<p>怎么办呢？</p>
+<p>看来曲线救国是不行了，得来硬的，好在<code>window.open()</code> 这个方法还能用，思路大概是通过浏览器标识判断是华为浏览器，此时新开一个页面，将请求到的form数据存在<code>sessionStorage</code>（url参数方式带表单太长，着实是有点不优雅）,然后在<code>/huaweiPay</code>的这个页面中获取<code>sessionStorage</code>中的表单数据提交。</p>
+<p>看码：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//util.ts 中封装浏览器标识判断</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">navigatorMark</span>(<span class="params">curr:<span class="built_in">string</span>=''</span>) </span>&#123;<span class="comment">//获取浏览器标记</span></span><br><span class="line">    <span class="keyword">const</span> userAgent = navigator.userAgent.toUpperCase();</span><br><span class="line">    <span class="built_in">console</span>.log(userAgent)</span><br><span class="line">    <span class="keyword">if</span>(curr)&#123;</span><br><span class="line">        curr = curr.toUpperCase();</span><br><span class="line">        <span class="keyword">return</span> userAgent.indexOf(curr)&gt;<span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> userAgent;</span><br><span class="line">&#125;<span class="comment">//navigatorMark</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// payment.ts 封装的支付宝支付</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">AlipayPay</span>(<span class="params">form: <span class="built_in">string</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(navigatorMark(<span class="string">'HUAWEI'</span>))&#123;<span class="comment">//华为鸿蒙的垃圾浏览器，要单独做兼容</span></span><br><span class="line">        sessionStorage.setItem(<span class="string">'HaweiPayForm'</span>,form);</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            sessionStorage.removeItem(<span class="string">'HaweiPayForm'</span>);</span><br><span class="line">        &#125;, <span class="number">50</span>);</span><br><span class="line">        <span class="built_in">window</span>.open(<span class="string">`<span class="subst">$&#123;getHostUrl()&#125;</span>/huaweiPay`</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//下面是正常支付</span></span><br><span class="line">    <span class="keyword">let</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">    div.id = <span class="string">'payDom'</span>;</span><br><span class="line">    div.style.display = <span class="string">'none'</span>;</span><br><span class="line">    div.innerHTML = form;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(div); </span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> formDom = <span class="built_in">document</span>.getElementById(<span class="string">'payDom'</span>)?.getElementsByTagName(<span class="string">'form'</span>)[<span class="number">0</span>];</span><br><span class="line">        formDom?.submit();</span><br><span class="line">    &#125;, <span class="number">10</span>);</span><br><span class="line">&#125; <span class="comment">//AlipayPay</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- /huaweiPay 的路由页面 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"huaweiPay"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 华为鸿蒙系统的垃圾浏览器，做了缓存，提交支付表单不会刷新，返回也监听不到生命周期，所以单开一个页面做支付，国产系统还有很长的路要走啊，可愁死我了！！！！ --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"info"</span>&gt;</span>订单支付中....<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"payDom"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">lang</span>=<span class="string">"ts"</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> &#123; defineComponent, ref&#125; <span class="keyword">from</span> <span class="string">"vue"</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span></span><br><span class="line">  setup() &#123;</span><br><span class="line"><span class="actionscript">    <span class="keyword">const</span> formDom = ref&lt;string | <span class="literal">null</span>&gt;(sessionStorage.getItem(<span class="string">'HaweiPayForm'</span>));</span></span><br><span class="line">    if(!formDom.value)&#123;</span><br><span class="line"><span class="actionscript">      <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line"><span class="actionscript">    &#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="actionscript">      sessionStorage.removeItem(<span class="string">'HaweiPayForm'</span>);<span class="comment">//安全起见，插入表单之后就删除</span></span></span><br><span class="line"><span class="javascript">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;<span class="comment">//有dom插入，延迟300ms</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> payDom = (<span class="built_in">document</span>.getElementById(<span class="string">'payDom'</span>) <span class="keyword">as</span> HTMLBaseElement);</span></span><br><span class="line"><span class="actionscript">        payDom.innerHTML = formDom.value <span class="keyword">as</span> string;</span></span><br><span class="line"><span class="actionscript">        payDom.getElementsByTagName(<span class="string">'form'</span>)[<span class="number">0</span>]?.submit();</span></span><br><span class="line">      &#125;, 300);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="actionscript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line">      formDom</span><br><span class="line">    &#125;;</span><br><span class="line"><span class="actionscript">  &#125;, <span class="comment">//setup</span></span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<p>补充知识，<code>sessionStorage</code>像上述这样的跳转，A-&gt;B,A的数据会拷贝到B，但是B的删除不会对A，A的操作同理也不会影响到B，他们相互独立管理。</p>
+<p>如上所述，相同的问题在调整过程中，Android开发的同事也有反应，在对鸿蒙系统做兼容的时候很痛苦，或许我们应该理性看待，国产系统真的还有很长的路要走…..</p>
+
+  </article>
+  <footer class="f-cf">
+    
+      <a href="/2022/04/21/Design%E7%9A%84table%E7%BB%84%E4%BB%B6%E7%9A%84hook%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/" class="link f-fl">⟵Design table组件的hook二次封装</a>
+    
+    
+      <a href="/2022/04/15/%E6%97%B6%E4%BB%A3%E5%9C%A8%E5%8F%AC%E5%94%A4/" class="link f-fr">时代在召唤⟶</a>
+    
+  </footer>
+</section></div>
+    <footer id="footer" class="f-cf">
+  707463973@qq.com
+  
+    
+      
+        · <a href="https://github.com/BiscuitCoder" target="_blank" class="nav-icn">GitHub</a>
+      
+    
+  
+  <span class="copyright">All rights reserved @Biscuit Blog</span>
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+
+  <!-- <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1280589363'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1280589363%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script> -->
+  
+</footer>
+  </div>
+</body>
+</html>

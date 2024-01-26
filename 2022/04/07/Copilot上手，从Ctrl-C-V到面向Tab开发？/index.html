@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0662d14d68b26e231e240a65105f5b4e";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Copilot上手，从Ctrl+C/V到面向Tab开发？ | Biscuit Blog</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1"
+  >
+  <meta name="description" content="Copilotd是什么来头 官网地址 https:&#x2F;&#x2F;copilot.github.com&#x2F; 这里推荐一个视频转gif的工具 https:&#x2F;&#x2F;tt0.top&#x2F;p&#x2F;gif&#x2F;video2gif&#x2F;  Copilotd 是OpenAI与GitHub联合构建的AI自动编程工具，你可以理解为一个简单更只能更完善的语法提示器，以前自己去github上找代码ctrl+c&#x2F;v，现在搞个服务配合IDE的插件，自动就检">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Copilot上手，从Ctrl+C&#x2F;V到面向Tab开发？">
+<meta property="og:url" content="https://haibinggan.gitee.io/2022/04/07/Copilot%E4%B8%8A%E6%89%8B%EF%BC%8C%E4%BB%8ECtrl-C-V%E5%88%B0%E9%9D%A2%E5%90%91Tab%E5%BC%80%E5%8F%91%EF%BC%9F/index.html">
+<meta property="og:site_name" content="Biscuit Blog">
+<meta property="og:description" content="Copilotd是什么来头 官网地址 https:&#x2F;&#x2F;copilot.github.com&#x2F; 这里推荐一个视频转gif的工具 https:&#x2F;&#x2F;tt0.top&#x2F;p&#x2F;gif&#x2F;video2gif&#x2F;  Copilotd 是OpenAI与GitHub联合构建的AI自动编程工具，你可以理解为一个简单更只能更完善的语法提示器，以前自己去github上找代码ctrl+c&#x2F;v，现在搞个服务配合IDE的插件，自动就检">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/420ff5a7f4134d79963d2e88512e50ff~tplv-k3u1fbpfcp-zoom-crop-mark:1304:1304:1304:734.awebp">
+<meta property="article:published_time" content="2022-04-07T09:35:41.000Z">
+<meta property="article:modified_time" content="2022-11-12T12:49:47.688Z">
+<meta property="article:author" content="haibinggan">
+<meta property="article:tag" content="Copilot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/420ff5a7f4134d79963d2e88512e50ff~tplv-k3u1fbpfcp-zoom-crop-mark:1304:1304:1304:734.awebp">
+  
+  <link
+    rel="icon"
+    href="/images/favicon.ico"
+  >
+  
+  <link
+    rel="stylesheet"
+    href="//cdn.bootcss.com/highlight.js/9.2.0/styles/github.min.css"
+  >
+  <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block);
+      });
+    });
+  </script>
+  
+<link rel="stylesheet" href="/css/index.css">
+
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/main.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body style="
+
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title"><b>🍪</b>&nbsp;<small>Biscuit Blog</small></a>
+  </header>
+  <div class="ctnWrap">
+    
+    <!-- <div class="icons">
+      
+        
+          
+            <a href="https://github.com/BiscuitCoder" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+      
+    </div> -->
+
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">
+              <i>⛩️</i>&nbsp;<span>初始</span>
+            </a>
+          
+        
+            <a href="/short" class="nav-menu ">
+              <i>📻</i>&nbsp;<span>拾遗</span>
+            </a>
+          
+        
+            <a href="/categories" class="nav-menu ">
+              <i>🗃️</i>&nbsp;<span>整理</span>
+            </a>
+          
+        
+            <a href="/navigation" class="nav-menu ">
+              <i>⚓</i>&nbsp;<span>链接们</span>
+            </a>
+          
+        
+            <a href="/about" class="nav-menu ">
+              <i>🤸</i>&nbsp;<span>关于</span>
+            </a>
+          
+        
+      
+    </div>
+  </div>
+</nav>
+    <div id="main"><section class="article cardBlur">
+  <h2 class="title">Copilot上手，从Ctrl+C/V到面向Tab开发？</h2>
+
+  <div class="tags">
+    
+      <a href="/tags/Copilot" class="title"><small># Copilot </small></a>
+    
+  </div>
+
+  
+  <p class="sub">Thursday , 2022-4-07 17:35</p>
+
+  
+  <article class="content">
+
+    
+      <img class="articleCover" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/420ff5a7f4134d79963d2e88512e50ff~tplv-k3u1fbpfcp-zoom-crop-mark:1304:1304:1304:734.awebp?"/>
+     
+    
+    <h1 id="Copilotd是什么来头"><a href="#Copilotd是什么来头" class="headerlink" title="Copilotd是什么来头"></a>Copilotd是什么来头</h1><blockquote>
+<p>官网地址 <a href="https://copilot.github.com/" target="_blank" rel="noopener">https://copilot.github.com/</a></p>
+<p>这里推荐一个视频转gif的工具 <a href="https://tt0.top/p/gif/video2gif/" target="_blank" rel="noopener">https://tt0.top/p/gif/video2gif/</a></p>
+</blockquote>
+<p>Copilotd 是OpenAI与GitHub联合构建的AI自动编程工具，你可以理解为一个简单更只能更完善的语法提示器，以前自己去github上找代码ctrl+c/v，现在搞个服务配合IDE的插件，自动就检索、筛选、生成方案给到开发者。 </p>
+<p>目前支持Js,Ts,Python,Golang,Ruby语法。</p>
+<h1 id="Vscode插件使用"><a href="#Vscode插件使用" class="headerlink" title="Vscode插件使用"></a>Vscode插件使用</h1><p>这里以Vscode为例，引用市场搜索插件GitHub Copilot，安装之，不过你需要登录github账号，然后加入测试白名单 <a href="https://github.com/features/copilot/signup" target="_blank" rel="noopener">https://github.com/features/copilot/signup</a> ，正常等待一天的时间会收到邮件，然后就可以使用了。</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8c860909db7e4a4bb788a3e98e14fb15~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<h3 id="以js为例的基本使用方法"><a href="#以js为例的基本使用方法" class="headerlink" title="以js为例的基本使用方法"></a>以js为例的基本使用方法</h3><p>输入注释，回车之后，等待加载完成会显示出代码提示，tab选择，esc放弃</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f45e2833088742d29e9e6a04ea676681~tplv-k3u1fbpfcp-watermark.image?" alt="tt0.top-390997.gif"></p>
+<p>选择注册ctrl+enter插件会列出更多的解决方案供开发者选择</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a8d71b926276454b922d024d25766636~tplv-k3u1fbpfcp-watermark.image?" alt="tt0.top-689975.gif"></p>
+<p>基础使用就是以上这些，可以说很简单，但…..这真的是想象的这么美好吗？</p>
+<h1 id="对Copilotd的看法"><a href="#对Copilotd的看法" class="headerlink" title="对Copilotd的看法"></a>对Copilotd的看法</h1><p>大概在js的语法下测试一些基础方法，总的来说这个Copilot写一些常用的工具类函数是可以在一定程度上提升效率，前提是你知道自己在写什么，并且知道插件返回的是什么才敢用。且对于业务逻辑的判断很不理想。</p>
+<p>总结来说就是：</p>
+<blockquote>
+<p>乍一看：什么玩意儿？再一看：豁~有点儿东西！最后：净整些花里胡哨的！</p>
+</blockquote>
+<p>或许随着技术与需求的挖掘，应用层的算法分析会更加精准智能，但是就目前而言，将Copilot视为一个单纯的效率工具都较为鸡肋。</p>
+<h1 id="这是趋势吗？"><a href="#这是趋势吗？" class="headerlink" title="这是趋势吗？"></a>这是趋势吗？</h1><p>我的答案：是！但这不至于让真正的技术从业者恐慌，起码在我们有生之年不至于。</p>
+<p>Copilot让我想起之前经常看到的logo自动生成器，banner自动生成器，炒菜机器人之类，乃至于近些年很流行的低代码前端框架之流的东西，这些应用发明确实是能代替掉一些低门槛技术的工作，但也仅限于低门槛的重复工作。</p>
+<p>比如你用过那种logo生成器就知道，其实是没有灵魂的设计，再牛逼的ai也想不出像小米的logo加圆角的升级方案跟故事，当然我觉得故事更重要。</p>
+<p>我还是一直坚持认为，其实一个创造性的工作，不管在做什么都是在表达自己，你打一双草鞋，写一行代码，画一幅画，上非洲当个娘娘，剔透修脚都是如此。在创造的过程中我们将自己的思想，价值观融入到作品中。从这个角度来看，我们都在复制自己意识的一部分来抵抗熵增，我们都在改变着这个世界，这是我们与机器的区别！</p>
+
+  </article>
+  <footer class="f-cf">
+    
+      <a href="/2022/04/15/%E6%97%B6%E4%BB%A3%E5%9C%A8%E5%8F%AC%E5%94%A4/" class="link f-fl">⟵时代在召唤</a>
+    
+    
+      <a href="/2022/03/31/design%E7%9A%84excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E5%B0%81%E8%A3%85/" class="link f-fr">ArcoDesign excel导入导出封装⟶</a>
+    
+  </footer>
+</section></div>
+    <footer id="footer" class="f-cf">
+  707463973@qq.com
+  
+    
+      
+        · <a href="https://github.com/BiscuitCoder" target="_blank" class="nav-icn">GitHub</a>
+      
+    
+  
+  <span class="copyright">All rights reserved @Biscuit Blog</span>
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+
+  <!-- <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1280589363'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1280589363%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script> -->
+  
+</footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0662d14d68b26e231e240a65105f5b4e";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>ArcoDesign excel导入导出封装 | Biscuit Blog</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1"
+  >
+  <meta name="description" content="记录一次简单的运营后台纯前端excel导入导出封装  12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667&#x2F;&#x2F;新建 @&#x2F;utils&#x2F;excel.tsimport saveAs from &#39;file-s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ArcoDesign excel导入导出封装">
+<meta property="og:url" content="https://haibinggan.gitee.io/2022/03/31/design%E7%9A%84excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E5%B0%81%E8%A3%85/index.html">
+<meta property="og:site_name" content="Biscuit Blog">
+<meta property="og:description" content="记录一次简单的运营后台纯前端excel导入导出封装  12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667&#x2F;&#x2F;新建 @&#x2F;utils&#x2F;excel.tsimport saveAs from &#39;file-s">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://haibinggan.gitee.io/images/static-image/202203311148320.jpg">
+<meta property="article:published_time" content="2022-03-31T03:00:18.000Z">
+<meta property="article:modified_time" content="2022-11-12T12:49:47.689Z">
+<meta property="article:author" content="haibinggan">
+<meta property="article:tag" content="vue3">
+<meta property="article:tag" content="excle">
+<meta property="article:tag" content="arco design">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://haibinggan.gitee.io/images/static-image/202203311148320.jpg">
+  
+  <link
+    rel="icon"
+    href="/images/favicon.ico"
+  >
+  
+  <link
+    rel="stylesheet"
+    href="//cdn.bootcss.com/highlight.js/9.2.0/styles/github.min.css"
+  >
+  <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block);
+      });
+    });
+  </script>
+  
+<link rel="stylesheet" href="/css/index.css">
+
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/main.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body style="
+
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title"><b>🍪</b>&nbsp;<small>Biscuit Blog</small></a>
+  </header>
+  <div class="ctnWrap">
+    
+    <!-- <div class="icons">
+      
+        
+          
+            <a href="https://github.com/BiscuitCoder" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+      
+    </div> -->
+
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">
+              <i>⛩️</i>&nbsp;<span>初始</span>
+            </a>
+          
+        
+            <a href="/short" class="nav-menu ">
+              <i>📻</i>&nbsp;<span>拾遗</span>
+            </a>
+          
+        
+            <a href="/categories" class="nav-menu ">
+              <i>🗃️</i>&nbsp;<span>整理</span>
+            </a>
+          
+        
+            <a href="/navigation" class="nav-menu ">
+              <i>⚓</i>&nbsp;<span>链接们</span>
+            </a>
+          
+        
+            <a href="/about" class="nav-menu ">
+              <i>🤸</i>&nbsp;<span>关于</span>
+            </a>
+          
+        
+      
+    </div>
+  </div>
+</nav>
+    <div id="main"><section class="article cardBlur">
+  <h2 class="title">ArcoDesign excel导入导出封装</h2>
+
+  <div class="tags">
+    
+      <a href="/tags/vue3" class="title"><small># vue3 </small></a>
+    
+      <a href="/tags/excle" class="title"><small># excle </small></a>
+    
+      <a href="/tags/arco design" class="title"><small># arco design </small></a>
+    
+  </div>
+
+  
+  <p class="sub">Thursday , 2022-3-31 11:00</p>
+
+  
+  <article class="content">
+
+    
+      <img class="articleCover" src="/images/static-image/202203311148320.jpg"/>
+     
+    
+    <blockquote>
+<p>记录一次简单的运营后台纯前端excel导入导出封装</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建 @/utils/excel.ts</span></span><br><span class="line"><span class="keyword">import</span> saveAs <span class="keyword">from</span> <span class="string">'file-saver'</span>;<span class="comment">//https://www.npmjs.com/package/file-saver</span></span><br><span class="line"><span class="keyword">import</span> ExcelJS <span class="keyword">from</span> <span class="string">'exceljs'</span>;<span class="comment">//https://github.com/exceljs/exceljs/blob/master/README_zh.md</span></span><br><span class="line"><span class="keyword">import</span> dayjs <span class="keyword">from</span> <span class="string">'dayjs'</span>;<span class="comment">//https://dayjs.fenxianglu.cn/</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> XLSX <span class="keyword">from</span> <span class="string">'xlsx'</span>;<span class="comment">//https://www.npmjs.com/package/xlsx</span></span><br><span class="line"><span class="keyword">import</span> &#123; Message &#125; <span class="keyword">from</span> <span class="string">'@arco-design/web-vue'</span>;<span class="comment">//https://arco.design/vue/component/message</span></span><br><span class="line"><span class="keyword">import</span> &#123; FileItem &#125; <span class="keyword">from</span> <span class="string">'@arco-design/web-vue/es/upload/interfaces'</span>;<span class="comment">//arco类型</span></span><br><span class="line"><span class="keyword">export</span> interface DownloadExcelPrams &#123;</span><br><span class="line">    columns: &#123; <span class="attr">title</span>: string, <span class="attr">key</span>: string &#125;[];</span><br><span class="line">    rows: object[];</span><br><span class="line">    name: string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//导出下载文件</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">downloadExcel</span>(<span class="params">&#123; columns, rows, name = <span class="string">'未命名文件'</span> &#125;: DownloadExcelPrams</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(dayjs().format(<span class="string">'YYYY-MM-DD HH时mm分'</span>))</span><br><span class="line">    <span class="keyword">const</span> workbook = <span class="keyword">new</span> ExcelJS.Workbook();</span><br><span class="line">    workbook.creator = <span class="string">'Start-front'</span>;</span><br><span class="line">    workbook.lastModifiedBy = <span class="string">'Start-front'</span>;</span><br><span class="line">    workbook.created = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">1985</span>, <span class="number">8</span>, <span class="number">30</span>);</span><br><span class="line">    workbook.modified = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    workbook.lastPrinted = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2016</span>, <span class="number">9</span>, <span class="number">27</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将工作簿添加一个sheet页sheet1</span></span><br><span class="line">    <span class="keyword">const</span> sheet1 = workbook.addWorksheet(name);</span><br><span class="line">    <span class="comment">// 表头数据添加</span></span><br><span class="line">    sheet1.columns = columns.map(<span class="function"><span class="params">item</span> =&gt;</span> (&#123;</span><br><span class="line">        header: item.title,</span><br><span class="line">        key: item.key,</span><br><span class="line">        width: <span class="number">20</span></span><br><span class="line">    &#125;));</span><br><span class="line">    <span class="comment">// 表格内容添加</span></span><br><span class="line">    rows.map(<span class="function"><span class="params">item</span> =&gt;</span> sheet1.addRow(item));</span><br><span class="line">    workbook.xlsx.writeBuffer().then(<span class="function"><span class="params">buffer</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(buffer)</span><br><span class="line">        saveAs(</span><br><span class="line">            <span class="keyword">new</span> Blob([buffer], &#123; <span class="attr">type</span>: <span class="string">'application/octet-stream'</span> &#125;),</span><br><span class="line">            <span class="string">`<span class="subst">$&#123;name&#125;</span>(<span class="subst">$&#123;dayjs().format(<span class="string">'YYYY年MM月DD日HH时mm分'</span>)&#125;</span>导出).xlsx`</span></span><br><span class="line">        );</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//读取文件为json格式</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">readExcle</span>(<span class="params">fileItem:FileItem</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'读取文件...'</span>,fileItem);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resove,reject</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> workbook:XLSX.Sheet;</span><br><span class="line">            <span class="keyword">const</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">            reader.readAsBinaryString(fileItem.file <span class="keyword">as</span> File);<span class="comment">//发起异步请求</span></span><br><span class="line">            reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">const</span> data = ev.target?.result;</span><br><span class="line">                workbook = XLSX.read(data, &#123;<span class="attr">type</span>: <span class="string">'binary'</span>&#125;);</span><br><span class="line">                <span class="keyword">const</span> sheetNames = workbook.SheetNames; <span class="comment">// 工作表名称集合</span></span><br><span class="line">                sheetNames.forEach(<span class="function">(<span class="params">name:string</span>) =&gt;</span> &#123;</span><br><span class="line">                    <span class="keyword">var</span> worksheet = workbook.Sheets[name]; <span class="comment">// 只能通过工作表名称来获取指定工作表</span></span><br><span class="line">                    <span class="keyword">let</span> jsonres = XLSX.utils.sheet_to_json(worksheet);</span><br><span class="line">                    resove(jsonres)</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;<span class="comment">//onload</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">            Message.error(<span class="string">'读取失败,请选择正确文件'</span>);</span><br><span class="line">            reject(error);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">//在vue文件中使用</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a-row</span> <span class="attr">class</span>=<span class="string">"tableActionRow"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a-col</span> <span class="attr">:span</span>=<span class="string">"16"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">a-space</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- action="/"  --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a-upload</span> @<span class="attr">change</span>=<span class="string">"onFileUpload"</span></span></span><br><span class="line"><span class="tag">              &gt;</span><span class="tag">&lt;<span class="name">template</span> #<span class="attr">upload-button</span></span></span><br><span class="line"><span class="tag">                &gt;</span><span class="tag">&lt;<span class="name">a-button</span>&gt;</span>批量导入<span class="tag">&lt;/<span class="name">a-button</span>&gt;</span><span class="tag">&lt;/<span class="name">template</span></span></span><br><span class="line"><span class="tag">              &gt;</span><span class="tag">&lt;/<span class="name">a-upload</span></span></span><br><span class="line"><span class="tag">            &gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">a-space</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">a-col</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- col 16 --&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">a-col</span> <span class="attr">:span</span>=<span class="string">"8"</span> <span class="attr">style</span>=<span class="string">"text-align: right"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">a-button</span> @<span class="attr">click</span>=<span class="string">"generateExcel()"</span></span></span><br><span class="line"><span class="tag">            &gt;</span><span class="tag">&lt;<span class="name">template</span> #<span class="attr">icon</span>&gt;</span><span class="tag">&lt;<span class="name">icon-download</span> /&gt;</span><span class="tag">&lt;/<span class="name">template</span>&gt;</span>下载<span class="tag">&lt;/<span class="name">a-button</span></span></span><br><span class="line"><span class="tag">          &gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">a-col</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- col8 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">a-row</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- tableActionRow --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">lang</span>=<span class="string">"ts"</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> &#123; downloadExcel, DownloadExcelPrams, readExcle &#125; <span class="keyword">from</span> <span class="string">'@/utils/excel'</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span></span><br><span class="line">  setup() &#123;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="keyword">const</span> state = reactive(&#123;</span></span><br><span class="line"><span class="actionscript">      renderData: [] <span class="keyword">as</span> object[]<span class="comment">//换成自己的数据源即可，具体格式看文档</span></span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="comment">// 下载表格</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> generateExcel = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> params:DownloadExcelPrams = &#123;</span></span><br><span class="line"><span class="actionscript">        columns:[&#123;title: <span class="string">'ID'</span>,key: <span class="string">'id'</span>&#125;,&#123;title: <span class="string">'合集名称'</span>,key: <span class="string">'name'</span>&#125;],</span></span><br><span class="line"><span class="javascript">        rows:state.renderData.map(<span class="function"><span class="params">v</span>=&gt;</span>(&#123;<span class="string">"key"</span>:v.id,<span class="string">"name"</span>:v.name,<span class="string">"id"</span>:v.id&#125;)),</span></span><br><span class="line"><span class="actionscript">        name:<span class="string">'测试表格'</span></span></span><br><span class="line">      &#125;</span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(params)</span></span><br><span class="line">      downloadExcel(params);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="comment">// 文件上传读取流</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> onFileUpload = <span class="keyword">async</span> (fileList:[],<span class="attr">fileItem</span>:any)=&gt;&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> data = <span class="keyword">await</span> readExcle(fileItem);</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">'读取结果'</span>,data)</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line">      generateExcel,</span><br><span class="line">      onFileUpload</span><br><span class="line">    &#125;;</span><br><span class="line"><span class="actionscript">  &#125;, <span class="comment">//setup</span></span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+  </article>
+  <footer class="f-cf">
+    
+      <a href="/2022/04/07/Copilot%E4%B8%8A%E6%89%8B%EF%BC%8C%E4%BB%8ECtrl-C-V%E5%88%B0%E9%9D%A2%E5%90%91Tab%E5%BC%80%E5%8F%91%EF%BC%9F/" class="link f-fl">⟵Copilot上手，从Ctrl+C/V到面向Tab开发？</a>
+    
+    
+      <a href="/2022/03/02/%E4%BD%A0%E8%BF%98%E8%AE%B0%E5%BE%97%E9%82%A3%E6%8B%9B%E4%BB%8E%E5%A4%A9%E8%80%8C%E9%99%8D%E7%9A%84%E6%8E%8C%E6%B3%95%E5%90%97%EF%BC%9F-%E3%80%8A%E5%8A%9F%E5%A4%AB%E3%80%8B/" class="link f-fr">还记得那招从天而降的掌法吗？-《功夫》⟶</a>
+    
+  </footer>
+</section></div>
+    <footer id="footer" class="f-cf">
+  707463973@qq.com
+  
+    
+      
+        · <a href="https://github.com/BiscuitCoder" target="_blank" class="nav-icn">GitHub</a>
+      
+    
+  
+  <span class="copyright">All rights reserved @Biscuit Blog</span>
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+
+  <!-- <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1280589363'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1280589363%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script> -->
+  
+</footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0662d14d68b26e231e240a65105f5b4e";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>vue+vueEsign+html2canvas合同签名上传 | Biscuit Blog</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1"
+  >
+  <meta name="description" content="一个vue+vant+vueEsign+html2canvas实现的合同签名上传demo，最终效果如下。不过似乎自己写的这样的签名合同不具有法律效用，如果生产项目中要用到且对法律比较敏感，建议还是找第三方有法律效力的机构对接。 此项目仅供学习参考，需要源码可评论留下邮箱。   思路要实现合同的动态加载且生成带签名的图片：  首先是加载合同，这个很简单，先在本地写好合同模板，如果涉及到业务数据，则">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue+vueEsign+html2canvas合同签名上传">
+<meta property="og:url" content="https://haibinggan.gitee.io/2022/07/28/vue-vant-vueEsign-html2canvas%E5%AE%9E%E7%8E%B0%E5%90%88%E5%90%8C%E7%AD%BE%E5%90%8D%E4%B8%8A%E4%BC%A0/index.html">
+<meta property="og:site_name" content="Biscuit Blog">
+<meta property="og:description" content="一个vue+vant+vueEsign+html2canvas实现的合同签名上传demo，最终效果如下。不过似乎自己写的这样的签名合同不具有法律效用，如果生产项目中要用到且对法律比较敏感，建议还是找第三方有法律效力的机构对接。 此项目仅供学习参考，需要源码可评论留下邮箱。   思路要实现合同的动态加载且生成带签名的图片：  首先是加载合同，这个很简单，先在本地写好合同模板，如果涉及到业务数据，则">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://haibinggan.gitee.io/images/static-image/2022-07-28.png">
+<meta property="article:published_time" content="2022-07-28T07:12:10.000Z">
+<meta property="article:modified_time" content="2022-11-12T12:49:47.690Z">
+<meta property="article:author" content="haibinggan">
+<meta property="article:tag" content="vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://haibinggan.gitee.io/images/static-image/2022-07-28.png">
+  
+  <link
+    rel="icon"
+    href="/images/favicon.ico"
+  >
+  
+  <link
+    rel="stylesheet"
+    href="//cdn.bootcss.com/highlight.js/9.2.0/styles/github.min.css"
+  >
+  <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block);
+      });
+    });
+  </script>
+  
+<link rel="stylesheet" href="/css/index.css">
+
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/main.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body style="
+
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title"><b>🍪</b>&nbsp;<small>Biscuit Blog</small></a>
+  </header>
+  <div class="ctnWrap">
+    
+    <!-- <div class="icons">
+      
+        
+          
+            <a href="https://github.com/BiscuitCoder" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+      
+    </div> -->
+
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">
+              <i>⛩️</i>&nbsp;<span>初始</span>
+            </a>
+          
+        
+            <a href="/short" class="nav-menu ">
+              <i>📻</i>&nbsp;<span>拾遗</span>
+            </a>
+          
+        
+            <a href="/categories" class="nav-menu ">
+              <i>🗃️</i>&nbsp;<span>整理</span>
+            </a>
+          
+        
+            <a href="/navigation" class="nav-menu ">
+              <i>⚓</i>&nbsp;<span>链接们</span>
+            </a>
+          
+        
+            <a href="/about" class="nav-menu ">
+              <i>🤸</i>&nbsp;<span>关于</span>
+            </a>
+          
+        
+      
+    </div>
+  </div>
+</nav>
+    <div id="main"><section class="article cardBlur">
+  <h2 class="title">vue+vueEsign+html2canvas合同签名上传</h2>
+
+  <div class="tags">
+    
+      <a href="/tags/vue" class="title"><small># vue </small></a>
+    
+  </div>
+
+  
+  <p class="sub">Thursday , 2022-7-28 15:12</p>
+
+  
+  <article class="content">
+
+    
+      <img class="articleCover" src="/images/static-image/2022-07-28.png"/>
+     
+    
+    <blockquote>
+<p>一个vue+vant+vueEsign+html2canvas实现的合同签名上传demo，最终效果如下。不过似乎自己写的这样的签名合同不具有法律效用，如果生产项目中要用到且对法律比较敏感，建议还是找第三方有法律效力的机构对接。</p>
+<p>此项目仅供学习参考，需要源码可评论留下邮箱。</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b126a2d6afc74355ae78768e3009a50e~tplv-k3u1fbpfcp-watermark.image?" alt="20220728_142603_20220728143046.gif"></p>
+</blockquote>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>要实现合同的动态加载且生成带签名的图片：</p>
+<ol>
+<li>首先是加载合同，这个很简单，先在本地写好合同模板，如果涉及到业务数据，则通过后端请求业务字段填入即可。</li>
+<li>然后是签名，这里使用了<a href="https://www.npmjs.com/package/vue-esign" target="_blank" rel="noopener">vueEsign</a>插件，来生成canvas的签名图片 </li>
+<li>将生成的图片添加到已经生成好的业务模板中，将整个页面生成图片后，上传服务器，这里使用到<a href="https://www.npmjs.com/package/html2canvas" target="_blank" rel="noopener">html2canvas</a>插件来生成</li>
+</ol>
+<h2 id="开整"><a href="#开整" class="headerlink" title="开整"></a>开整</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//index.vue</span></span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">"home"</span>&gt;</span><br><span class="line">  </span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"canvasBox"</span> v-<span class="keyword">if</span>=<span class="string">"state.canvasImgRes"</span>&gt;</span><br><span class="line">      &lt;img :src=<span class="string">"state.canvasImgRes"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"canvasImgRes"</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    &lt;div v-else&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Doc :signImg="state.signImg" /</span>&gt;</span><br><span class="line">      &lt;Sign @signImg=<span class="string">"setSignImg"</span> /&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script lang="ts" setup&gt;</span></span><br><span class="line"><span class="regexp">import &#123; reactive &#125; from "vue";</span></span><br><span class="line"><span class="regexp">import html2canvas from 'html2canvas';</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">import Sign from './</span>comp/sign.vue<span class="string">';</span></span><br><span class="line"><span class="string">import Doc from '</span>./comp/doc.vue<span class="string">';</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">import &#123; Toast &#125; from '</span>vant<span class="string">';</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const state = reactive(&#123;</span></span><br><span class="line"><span class="string">  signImg: '</span><span class="string">',//签名生成的图片</span></span><br><span class="line"><span class="string">  canvasImgRes: '</span><span class="string">'//合同canvas生成的结果</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const uploadApi = async ()=&gt;&#123;</span></span><br><span class="line"><span class="string">  Toast.loading(&#123;</span></span><br><span class="line"><span class="string">      message:'</span>合同上传中,请勿退出！<span class="string">',</span></span><br><span class="line"><span class="string">      duration:0,</span></span><br><span class="line"><span class="string">      forbidClick: true</span></span><br><span class="line"><span class="string">  &#125;);</span></span><br><span class="line"><span class="string">  try &#123;</span></span><br><span class="line"><span class="string">    // state.canvasImgRes 上传base64数据,请求自定的api</span></span><br><span class="line"><span class="string">    // await uplaodImg(&#123;base64Imager:state.canvasImgRes&#125;);</span></span><br><span class="line"><span class="string">    setTimeout(() =&gt; &#123;</span></span><br><span class="line"><span class="string">      Toast.success('</span>已上传<span class="string">');</span></span><br><span class="line"><span class="string">    &#125;, 1000);</span></span><br><span class="line"><span class="string">  &#125; catch (error) &#123;</span></span><br><span class="line"><span class="string">     Toast.success('</span>上传失败<span class="string">');</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const createDocCanvas = () =&gt; &#123;//创建合同的整个图片</span></span><br><span class="line"><span class="string">  html2canvas(document.getElementById('</span>doc<span class="string">') as HTMLElement).then((canvas) =&gt; &#123;</span></span><br><span class="line"><span class="string">    state.canvasImgRes = canvas.toDataURL("image/png");</span></span><br><span class="line"><span class="string">    uploadApi();</span></span><br><span class="line"><span class="string">  &#125;);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const setSignImg = (imgBase64: string) =&gt; &#123;//签名完成</span></span><br><span class="line"><span class="string">  state.signImg = imgBase64;</span></span><br><span class="line"><span class="string">  console.log(imgBase64);</span></span><br><span class="line"><span class="string">  setTimeout(() =&gt; &#123;</span></span><br><span class="line"><span class="string">    createDocCanvas();</span></span><br><span class="line"><span class="string">  &#125;, 500);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;style lang="scss" scoped&gt;</span></span><br><span class="line"><span class="string">#home &#123;</span></span><br><span class="line"><span class="string">  .canvasImgRes &#123;</span></span><br><span class="line"><span class="string">    display: block;</span></span><br><span class="line"><span class="string">    width: 100%;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">.canvasBox&#123;</span></span><br><span class="line"><span class="string">  text-align: center;</span></span><br><span class="line"><span class="string">  height: 100vh;</span></span><br><span class="line"><span class="string">  overflow-y: auto;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&lt;/style&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来我们封装两个核心的签名与合同组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ./comp/doc.vue</span></span><br><span class="line"><span class="comment">// 这里封装了一个 DocText 组件，因为合同的内容通常很多，最好通过单独封装一个组件来显示合同模板与请求接口中的业务数据，方便此组件的维护，都是常规操作，这里不做赘述，这个视个人情况而定</span></span><br><span class="line"><span class="comment">// 这里需要注意的是v-html的样式需要在组件内定义样式无法生效，scss要:deep的方式，或者写咋最外层，看个人习惯</span></span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"doc"</span> id=<span class="string">"doc"</span>&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"main"</span> id=<span class="string">"domHtml"</span> v-<span class="keyword">if</span>=<span class="string">"docInfo"</span>&gt;</span><br><span class="line">      &lt;h1&gt;长城贴瓷砖项目协议&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">      &lt;DocText/</span>&gt;</span><br><span class="line">      &lt;img :src=<span class="string">"signImg"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"signImg"</span> v-<span class="keyword">if</span>=<span class="string">"signImg"</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">  &lt;!-- doc --&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div style=<span class="string">"height:70px;"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script lang=<span class="string">"ts"</span> setup&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; onMounted, ref, PropType &#125; <span class="keyword">from</span> <span class="string">"vue"</span>;</span><br><span class="line"><span class="keyword">import</span> DocText <span class="keyword">from</span> <span class="string">'./docText.vue'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> docInfo = ref&lt;any&gt;(<span class="literal">null</span>);<span class="comment">//合同信息</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当签名组件完成签名图片生成后，传入当前组件，你可以将它放在任何dom中，且自定义样式</span></span><br><span class="line">defineProps(&#123;</span><br><span class="line">  signImg: &#123;</span><br><span class="line">    type: <span class="built_in">String</span> <span class="keyword">as</span> PropType&lt;string&gt;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;style lang="scss" scoped&gt;</span></span><br><span class="line"><span class="regexp">.signImg&#123;</span></span><br><span class="line"><span class="regexp">  width:100%;</span></span><br><span class="line"><span class="regexp">  height: auto;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// './comp/sign.vue';</span></span><br><span class="line"><span class="comment">// 核心的签名组件，用户可以签名与重写</span></span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"showBtn"</span>&gt;</span><br><span class="line">   &lt;van-button type=<span class="string">"primary"</span> @click=<span class="string">"show=true"</span>&gt;客户确认签名&lt;<span class="regexp">/van-button&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;van-popup v-model:show=<span class="string">"show"</span> position=<span class="string">"bottom"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"sign"</span>&gt;</span><br><span class="line">      &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"text"</span>&gt;请客户在虚线区域内签名&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;div class="signBorder"&gt;</span></span><br><span class="line"><span class="regexp">        &lt;vueEsign ref="esign" v-bind="signConfig" class="signMain" /</span>&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;!-- signBorder --&gt;</span></span><br><span class="line"><span class="regexp">      &lt;div class="btns"&gt;</span></span><br><span class="line"><span class="regexp">        &lt;div class="item" @click="handleReset"&gt;清空重写&lt;/</span>div&gt;</span><br><span class="line">        &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"item"</span> @click=<span class="string">"handleGenerate"</span>&gt;确认提交&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">      &lt;!-- btns --&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  &lt;/</span>van-popup&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script lang="ts" setup&gt;</span></span><br><span class="line"><span class="regexp">import &#123; reactive, ref &#125; from "vue";</span></span><br><span class="line"><span class="regexp">import vueEsign from "vue-esign";</span></span><br><span class="line"><span class="regexp">import &#123; Toast &#125; from "vant";</span></span><br><span class="line"><span class="regexp">import &#123;useState&#125; from '@/</span>store/state<span class="string">';</span></span><br><span class="line"><span class="string">const show = ref&lt;boolean&gt;(false);</span></span><br><span class="line"><span class="string">const State = useState();</span></span><br><span class="line"><span class="string">const emit = defineEmits(['</span>signImg<span class="string">']);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">interface Esign &#123;</span></span><br><span class="line"><span class="string">  reset: any | undefined;</span></span><br><span class="line"><span class="string">  generate: any | undefined;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">const signConfig = reactive(&#123;</span></span><br><span class="line"><span class="string">  lineWidth: 6,</span></span><br><span class="line"><span class="string">  lineColor: "#000000",</span></span><br><span class="line"><span class="string">  bgColor: "#ffffff00",//这里配置的是透明背景色</span></span><br><span class="line"><span class="string">  resultImg: "",</span></span><br><span class="line"><span class="string">  isCrop: false,</span></span><br><span class="line"><span class="string">  isClearBgColor: false,</span></span><br><span class="line"><span class="string">  height:340</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string">const esign = ref&lt;Esign&gt;(&#123; reset: undefined, generate: undefined &#125;);</span></span><br><span class="line"><span class="string">const signImg = ref("");</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const handleReset = () =&gt; &#123;</span></span><br><span class="line"><span class="string">  esign.value.reset();</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const handleGenerate = () =&gt; &#123;</span></span><br><span class="line"><span class="string">  Toast.loading(&#123;</span></span><br><span class="line"><span class="string">    message: "合同生成中,请稍候！",</span></span><br><span class="line"><span class="string">    duration: 0,</span></span><br><span class="line"><span class="string">    forbidClick: true,</span></span><br><span class="line"><span class="string">  &#125;);</span></span><br><span class="line"><span class="string">  try &#123;</span></span><br><span class="line"><span class="string">    esign.value</span></span><br><span class="line"><span class="string">      .generate()</span></span><br><span class="line"><span class="string">      .then((res: string) =&gt; &#123;</span></span><br><span class="line"><span class="string">        signImg.value = res;</span></span><br><span class="line"><span class="string">        emit("signImg", res);//将signImg生成的base64图片回传</span></span><br><span class="line"><span class="string">      &#125;)</span></span><br><span class="line"><span class="string">      .catch((err: any) =&gt; &#123;</span></span><br><span class="line"><span class="string">        Toast.fail("请签名！");</span></span><br><span class="line"><span class="string">      &#125;);</span></span><br><span class="line"><span class="string">  &#125; catch (error) &#123;</span></span><br><span class="line"><span class="string">    Toast.fail("合同生成失败，请重试！");</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;style lang="scss" scoped&gt;</span></span><br><span class="line"><span class="string">.sign &#123;</span></span><br><span class="line"><span class="string">  position: fixed;</span></span><br><span class="line"><span class="string">  bottom: 0;</span></span><br><span class="line"><span class="string">  left: 0;</span></span><br><span class="line"><span class="string">  width: 100%;</span></span><br><span class="line"><span class="string">  background: white;</span></span><br><span class="line"><span class="string">  z-index: 111;</span></span><br><span class="line"><span class="string">  box-shadow: 0px -5px 20px rgba($color: #000000, $alpha: 0.15);</span></span><br><span class="line"><span class="string">  .signImg &#123;</span></span><br><span class="line"><span class="string">    display: block;</span></span><br><span class="line"><span class="string">    width: 100%;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  .signBorder &#123;</span></span><br><span class="line"><span class="string">    border: 2px dotted rgba($color: #000000, $alpha: 0.2);</span></span><br><span class="line"><span class="string">    margin: 5px;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  .text &#123;</span></span><br><span class="line"><span class="string">    color: gray;</span></span><br><span class="line"><span class="string">    text-align: center;</span></span><br><span class="line"><span class="string">    font-size: 12px;</span></span><br><span class="line"><span class="string">    padding: 10px;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  .btns &#123;</span></span><br><span class="line"><span class="string">    padding: 10px;</span></span><br><span class="line"><span class="string">    display: flex;</span></span><br><span class="line"><span class="string">    .item &#123;</span></span><br><span class="line"><span class="string">      margin: 10px;</span></span><br><span class="line"><span class="string">      flex: 1;</span></span><br><span class="line"><span class="string">      color: white;</span></span><br><span class="line"><span class="string">      border: none;</span></span><br><span class="line"><span class="string">      text-align: center;</span></span><br><span class="line"><span class="string">      font-size: 14px;</span></span><br><span class="line"><span class="string">      padding: 10px;</span></span><br><span class="line"><span class="string">      border-radius: 100px;</span></span><br><span class="line"><span class="string">      &amp;:nth-child(1) &#123;</span></span><br><span class="line"><span class="string">        background: #ff2b2b;</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">      &amp;:nth-child(2) &#123;</span></span><br><span class="line"><span class="string">        background: #1c73ff;</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">      &amp;:active &#123;</span></span><br><span class="line"><span class="string">        opacity: 0.8;</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">.showBtn&#123;</span></span><br><span class="line"><span class="string">  position: fixed;</span></span><br><span class="line"><span class="string">  bottom: 0;</span></span><br><span class="line"><span class="string">  width: 100%;</span></span><br><span class="line"><span class="string">  z-index: 11;</span></span><br><span class="line"><span class="string">  padding: 10px;</span></span><br><span class="line"><span class="string">  background: white;</span></span><br><span class="line"><span class="string">  box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);</span></span><br><span class="line"><span class="string">  text-align: right;</span></span><br><span class="line"><span class="string">  button&#123;</span></span><br><span class="line"><span class="string">    width: 100%;</span></span><br><span class="line"><span class="string">    position: relative;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&lt;/style&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样最简单的一个在线合同签名上传就能实现了，当然其实最应该研究的是，vueEsign、html2canvas这两个的插件的实现原理。</p>
+<p>就酱，完！</p>
+
+  </article>
+  <footer class="f-cf">
+    
+      <a href="/2022/08/11/%E4%BA%92%E8%81%94%E7%BD%91%E9%A1%B9%E7%9B%AE%E5%90%84%E8%81%8C%E8%B4%A3%E5%B8%B8%E7%94%A8%E6%8A%80%E6%9C%AF%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%95%B4%E7%90%86%EF%BC%88%E7%BB%99%E5%88%9D%E5%AD%A6%E8%80%85%EF%BC%89/" class="link f-fl">⟵互联网项目各职责常用技术不完全整理（给初学者）</a>
+    
+    
+      <a href="/2022/07/28/%E4%BB%96%E4%BB%AC%E5%B8%8C%E6%9C%9B%E6%88%91%E4%BB%AC%E6%88%90%E4%B8%BA%E4%BA%8C%E8%88%85%EF%BC%8C%E6%88%91%E4%BB%AC%E7%BB%88%E5%B0%86%E6%88%90%E4%B8%BA%E4%BA%8C%E8%88%85%EF%BC%9F/" class="link f-fr">他们希望我们成为&#34;二舅&#34;，我们终将沦为&#34;二舅&#34;？⟶</a>
+    
+  </footer>
+</section></div>
+    <footer id="footer" class="f-cf">
+  707463973@qq.com
+  
+    
+      
+        · <a href="https://github.com/BiscuitCoder" target="_blank" class="nav-icn">GitHub</a>
+      
+    
+  
+  <span class="copyright">All rights reserved @Biscuit Blog</span>
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+
+  <!-- <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1280589363'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1280589363%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script> -->
+  
+</footer>
+  </div>
+</body>
+</html>

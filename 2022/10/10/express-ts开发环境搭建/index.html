@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0662d14d68b26e231e240a65105f5b4e";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Express+ts开发环境搭建 | Biscuit Blog</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1"
+  >
+  <meta name="description" content="ts是个好东西，属于用过你就回不去，但是express还是需要自己去配置一二，这里使用脚手架搭建的基础框架 https:&#x2F;&#x2F;www.expressjs.com.cn&#x2F;starter&#x2F;generator.html  package.json命令与开发依赖,dev与server加入了环境变量，后续用于区分运行目录 12345678910111213141516171819202122232425&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Express+ts开发环境搭建">
+<meta property="og:url" content="https://haibinggan.gitee.io/2022/10/10/express-ts%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="Biscuit Blog">
+<meta property="og:description" content="ts是个好东西，属于用过你就回不去，但是express还是需要自己去配置一二，这里使用脚手架搭建的基础框架 https:&#x2F;&#x2F;www.expressjs.com.cn&#x2F;starter&#x2F;generator.html  package.json命令与开发依赖,dev与server加入了环境变量，后续用于区分运行目录 12345678910111213141516171819202122232425&amp;#">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/05364eff605244ad92238c1de8683c5f~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3469b6967e4f475395eb6b7bec10e29d~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8d313c367e3e485a85f9e8f484b5590f~tplv-k3u1fbpfcp-watermark.image">
+<meta property="article:published_time" content="2022-10-10T02:51:17.000Z">
+<meta property="article:modified_time" content="2022-11-12T12:49:47.689Z">
+<meta property="article:author" content="haibinggan">
+<meta property="article:tag" content="nodejs">
+<meta property="article:tag" content="express">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/05364eff605244ad92238c1de8683c5f~tplv-k3u1fbpfcp-watermark.image">
+  
+  <link
+    rel="icon"
+    href="/images/favicon.ico"
+  >
+  
+  <link
+    rel="stylesheet"
+    href="//cdn.bootcss.com/highlight.js/9.2.0/styles/github.min.css"
+  >
+  <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block);
+      });
+    });
+  </script>
+  
+<link rel="stylesheet" href="/css/index.css">
+
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/main.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body style="
+
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title"><b>🍪</b>&nbsp;<small>Biscuit Blog</small></a>
+  </header>
+  <div class="ctnWrap">
+    
+    <!-- <div class="icons">
+      
+        
+          
+            <a href="https://github.com/BiscuitCoder" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+      
+    </div> -->
+
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">
+              <i>⛩️</i>&nbsp;<span>初始</span>
+            </a>
+          
+        
+            <a href="/short" class="nav-menu ">
+              <i>📻</i>&nbsp;<span>拾遗</span>
+            </a>
+          
+        
+            <a href="/categories" class="nav-menu ">
+              <i>🗃️</i>&nbsp;<span>整理</span>
+            </a>
+          
+        
+            <a href="/navigation" class="nav-menu ">
+              <i>⚓</i>&nbsp;<span>链接们</span>
+            </a>
+          
+        
+            <a href="/about" class="nav-menu ">
+              <i>🤸</i>&nbsp;<span>关于</span>
+            </a>
+          
+        
+      
+    </div>
+  </div>
+</nav>
+    <div id="main"><section class="article cardBlur">
+  <h2 class="title">Express+ts开发环境搭建</h2>
+
+  <div class="tags">
+    
+      <a href="/tags/nodejs" class="title"><small># nodejs </small></a>
+    
+      <a href="/tags/express" class="title"><small># express </small></a>
+    
+  </div>
+
+  
+  <p class="sub">Monday , 2022-10-10 10:51</p>
+
+  
+  <article class="content">
+
+     
+    
+    <blockquote>
+<p>ts是个好东西，属于用过你就回不去，但是express还是需要自己去配置一二，这里使用脚手架搭建的基础框架 <a href="https://www.expressjs.com.cn/starter/generator.html" target="_blank" rel="noopener">https://www.expressjs.com.cn/starter/generator.html</a></p>
+</blockquote>
+<p>package.json命令与开发依赖,dev与server加入了环境变量，后续用于区分运行目录</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"express-test"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"0.0.0"</span>,</span><br><span class="line">  <span class="string">"private"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"ts-node ./bin/www"</span>,</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"set NODE_ENV=development &amp;&amp; nodemon -e ts --exec &amp;&amp; ts-node ./bin/www"</span>,</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"tsc"</span>,</span><br><span class="line">    <span class="string">"server"</span>: <span class="string">"set NODE_ENV=production &amp;&amp; tsc &amp;&amp; node ./bin/www"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"cookie-parser"</span>: <span class="string">"~1.4.4"</span>,</span><br><span class="line">    <span class="string">"debug"</span>: <span class="string">"~2.6.9"</span>,</span><br><span class="line">    <span class="string">"ejs"</span>: <span class="string">"~2.6.1"</span>,</span><br><span class="line">    <span class="string">"express"</span>: <span class="string">"~4.16.1"</span>,</span><br><span class="line">    <span class="string">"http-errors"</span>: <span class="string">"~1.6.3"</span>,</span><br><span class="line">    <span class="string">"morgan"</span>: <span class="string">"~1.9.1"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"@types/express"</span>: <span class="string">"^4.17.14"</span>,</span><br><span class="line">    <span class="string">"@types/node"</span>: <span class="string">"^18.8.3"</span>,</span><br><span class="line">    <span class="string">"ts-node-dev"</span>: <span class="string">"^2.0.0"</span>,</span><br><span class="line">    <span class="string">"typescript"</span>: <span class="string">"^4.8.4"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>生成目录后<code>cnpm install</code>依赖之后，将目录与js文件改造为以下目录与ts文件</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/05364eff605244ad92238c1de8683c5f~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>配置加入的<code>tsconfig.json</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"compilerOptions"</span>: &#123;</span><br><span class="line">      <span class="string">"target"</span>: <span class="string">"ES6"</span>,</span><br><span class="line">      <span class="string">"module"</span>: <span class="string">"commonjs"</span>,</span><br><span class="line">      <span class="string">"emitDecoratorMetadata"</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">"experimentalDecorators"</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">"outDir"</span>: <span class="string">"build"</span>,</span><br><span class="line">      <span class="string">"rootDir"</span>: <span class="string">"src"</span>,</span><br><span class="line">      <span class="string">"lib"</span>: [</span><br><span class="line">          <span class="string">"es6"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"sourceMap"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"exclude"</span>: [</span><br><span class="line">      <span class="string">"node_modules"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>改造<code>app.ts</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入类型定义</span></span><br><span class="line"><span class="keyword">import</span> &#123; NextFunction,Response,Request, Errback &#125; <span class="keyword">from</span> <span class="string">"express"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> createError = <span class="built_in">require</span>(<span class="string">'http-errors'</span>);</span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">'cookie-parser'</span>);</span><br><span class="line"><span class="keyword">var</span> logger = <span class="built_in">require</span>(<span class="string">'morgan'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> indexRouter = <span class="built_in">require</span>(<span class="string">'./routes/index'</span>);</span><br><span class="line"><span class="keyword">var</span> usersRouter = <span class="built_in">require</span>(<span class="string">'./routes/users'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"></span><br><span class="line"><span class="comment">// view engine setup</span></span><br><span class="line"><span class="built_in">console</span>.log(process.env.NODE_ENV);</span><br><span class="line"><span class="comment">//这里需要用path模块，避免打包环境找不到路径</span></span><br><span class="line">app.set(<span class="string">'views'</span>, path.resolve(<span class="string">'src'</span>, <span class="string">'views'</span>));</span><br><span class="line">app.set(<span class="string">'view engine'</span>, <span class="string">'ejs'</span>);</span><br><span class="line"></span><br><span class="line">app.use(logger(<span class="string">'dev'</span>));</span><br><span class="line">app.use(express.json());</span><br><span class="line">app.use(express.urlencoded(&#123; <span class="attr">extended</span>: <span class="literal">false</span> &#125;));</span><br><span class="line">app.use(cookieParser());</span><br><span class="line"><span class="comment">//这里需要用path模块，避免打包环境找不到路径</span></span><br><span class="line">app.use(express.static(path.resolve(<span class="string">'src'</span>, <span class="string">'public'</span>)));</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/'</span>, indexRouter);</span><br><span class="line">app.use(<span class="string">'/users'</span>, usersRouter);</span><br><span class="line"></span><br><span class="line"><span class="comment">// catch 404 and forward to error handler</span></span><br><span class="line"><span class="comment">//这里就可以正常使用类型定义了</span></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req:Request, res:Response, next:NextFunction</span>) </span>&#123;</span><br><span class="line">  next(createError(<span class="number">404</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// error handler</span></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">err:any, req:Request, res:Response, next:NextFunction</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// set locals, only providing error in development</span></span><br><span class="line">  res.locals.message = err.message;</span><br><span class="line">  res.locals.error = req.app.get(<span class="string">'env'</span>) === <span class="string">'development'</span> ? err : &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// render the error page</span></span><br><span class="line">  res.status(err.status || <span class="number">500</span>);</span><br><span class="line">  res.render(<span class="string">'error'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = app;</span><br></pre></td></tr></table></figure>
+
+<p>做启动配置<code>/bin/www</code>，这里主要是将app的引用地址做环境变量判断，生产环境用打包出来的js文件运行</p>
+<p><code>var app = require(process.env.NODE_ENV==&#39;development&#39; ? &#39;../src/app&#39; : &#39;../build/app&#39;);</code></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3469b6967e4f475395eb6b7bec10e29d~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>当使用<code>npm run build</code>或者<code>npm run server</code>的时候，tsc配置应用与打包到build目录</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8d313c367e3e485a85f9e8f484b5590f~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>最后<code>npm run dev 或者npm run server</code>就可以开始愉快的ts后端开发了。</p>
+
+  </article>
+  <footer class="f-cf">
+    
+      <a href="/2022/10/10/micro-app-vue3%E5%BE%AE%E5%89%8D%E7%AB%AF%E7%8E%A9%E8%80%8D%E4%B8%80%E4%BA%8C/" class="link f-fl">⟵Micro-app+vue3微前端玩耍一二</a>
+    
+    
+      <a href="/2022/08/11/%E4%BA%92%E8%81%94%E7%BD%91%E9%A1%B9%E7%9B%AE%E5%90%84%E8%81%8C%E8%B4%A3%E5%B8%B8%E7%94%A8%E6%8A%80%E6%9C%AF%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%95%B4%E7%90%86%EF%BC%88%E7%BB%99%E5%88%9D%E5%AD%A6%E8%80%85%EF%BC%89/" class="link f-fr">互联网项目各职责常用技术不完全整理（给初学者）⟶</a>
+    
+  </footer>
+</section></div>
+    <footer id="footer" class="f-cf">
+  707463973@qq.com
+  
+    
+      
+        · <a href="https://github.com/BiscuitCoder" target="_blank" class="nav-icn">GitHub</a>
+      
+    
+  
+  <span class="copyright">All rights reserved @Biscuit Blog</span>
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+
+  <!-- <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1280589363'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1280589363%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script> -->
+  
+</footer>
+  </div>
+</body>
+</html>

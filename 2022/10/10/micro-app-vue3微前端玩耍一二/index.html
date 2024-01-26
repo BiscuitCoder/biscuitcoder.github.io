@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0662d14d68b26e231e240a65105f5b4e";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Micro-app+vue3微前端玩耍一二 | Biscuit Blog</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1"
+  >
+  <meta name="description" content="最近需要在老的vue2运营后台中集成新的模块，看着越发臃肿的代码洒家陷入了沉思，这样下去工作的幸福感要去哪里寻找呢？况且没有typescript这可是个大问题，要升级改造老项目风险太大。 一般遇到这种问题，第一想到的是iframe加载的方式，但是这会存在几个问题。  浏览器的完全隔离，文件与数据共享很难被共享，一旦有主应用跟子应用有复杂交互的时候很难维护，不过一般不敏感的参数通过url也都能实现">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Micro-app+vue3微前端玩耍一二">
+<meta property="og:url" content="https://haibinggan.gitee.io/2022/10/10/micro-app-vue3%E5%BE%AE%E5%89%8D%E7%AB%AF%E7%8E%A9%E8%80%8D%E4%B8%80%E4%BA%8C/index.html">
+<meta property="og:site_name" content="Biscuit Blog">
+<meta property="og:description" content="最近需要在老的vue2运营后台中集成新的模块，看着越发臃肿的代码洒家陷入了沉思，这样下去工作的幸福感要去哪里寻找呢？况且没有typescript这可是个大问题，要升级改造老项目风险太大。 一般遇到这种问题，第一想到的是iframe加载的方式，但是这会存在几个问题。  浏览器的完全隔离，文件与数据共享很难被共享，一旦有主应用跟子应用有复杂交互的时候很难维护，不过一般不敏感的参数通过url也都能实现">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dff9141a832e434ba419a8c7b42df8c6~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/455a16547e014877bfde956a1d754385~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/894c3ae1b543482c9c9dcc10c4817c96~tplv-k3u1fbpfcp-watermark.image">
+<meta property="article:published_time" content="2022-10-10T02:53:27.000Z">
+<meta property="article:modified_time" content="2022-11-12T12:49:47.690Z">
+<meta property="article:author" content="haibinggan">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="Micro-app">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dff9141a832e434ba419a8c7b42df8c6~tplv-k3u1fbpfcp-watermark.image">
+  
+  <link
+    rel="icon"
+    href="/images/favicon.ico"
+  >
+  
+  <link
+    rel="stylesheet"
+    href="//cdn.bootcss.com/highlight.js/9.2.0/styles/github.min.css"
+  >
+  <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block);
+      });
+    });
+  </script>
+  
+<link rel="stylesheet" href="/css/index.css">
+
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/main.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body style="
+
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title"><b>🍪</b>&nbsp;<small>Biscuit Blog</small></a>
+  </header>
+  <div class="ctnWrap">
+    
+    <!-- <div class="icons">
+      
+        
+          
+            <a href="https://github.com/BiscuitCoder" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+      
+    </div> -->
+
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">
+              <i>⛩️</i>&nbsp;<span>初始</span>
+            </a>
+          
+        
+            <a href="/short" class="nav-menu ">
+              <i>📻</i>&nbsp;<span>拾遗</span>
+            </a>
+          
+        
+            <a href="/categories" class="nav-menu ">
+              <i>🗃️</i>&nbsp;<span>整理</span>
+            </a>
+          
+        
+            <a href="/navigation" class="nav-menu ">
+              <i>⚓</i>&nbsp;<span>链接们</span>
+            </a>
+          
+        
+            <a href="/about" class="nav-menu ">
+              <i>🤸</i>&nbsp;<span>关于</span>
+            </a>
+          
+        
+      
+    </div>
+  </div>
+</nav>
+    <div id="main"><section class="article cardBlur">
+  <h2 class="title">Micro-app+vue3微前端玩耍一二</h2>
+
+  <div class="tags">
+    
+      <a href="/tags/vue" class="title"><small># vue </small></a>
+    
+      <a href="/tags/Micro-app" class="title"><small># Micro-app </small></a>
+    
+  </div>
+
+  
+  <p class="sub">Monday , 2022-10-10 10:53</p>
+
+  
+  <article class="content">
+
+     
+    
+    <blockquote>
+<p>最近需要在老的vue2运营后台中集成新的模块，看着越发臃肿的代码洒家陷入了沉思，这样下去工作的幸福感要去哪里寻找呢？况且没有typescript这可是个大问题，要升级改造老项目风险太大。</p>
+<p>一般遇到这种问题，第一想到的是iframe加载的方式，但是这会存在几个问题。</p>
+<ol>
+<li>浏览器的完全隔离，文件与数据共享很难被共享，一旦有主应用跟子应用有复杂交互的时候很难维护，不过一般不敏感的参数通过url也都能实现。</li>
+<li>资源加载都要刷新，主应用的返回前进路由无法控制。</li>
+</ol>
+<p>不过之前遇到这问题，我们通过在主项目中的静态文件目录public中加载子项目的dist文件，通过主应用的路由与iframe的路由做映射去访问，很好的优化了上诉问题，数据共享可以通过本地存储搞定，也可以写全局监听。</p>
+<p>这个方案如果对项目的隔离部署有啥要求，并且对包的大小不敏感，可以说是很好处理方式，很传统，但是很稳当，可以让你安心下班！</p>
+</blockquote>
+<blockquote>
+<p>BUT，日新月异的技术变化，微前端始终是一个绕不过去问题，SO，继续折腾吧。</p>
+<p>目前比较主流的微前端框架有几个</p>
+<p>阿里的乾坤 <a href="https://qiankun.umijs.org/zh/cookbook" target="_blank" rel="noopener">https://qiankun.umijs.org/zh/cookbook</a></p>
+<p>腾讯的无界 <a href="https://wujie-micro.github.io/doc/" target="_blank" rel="noopener">https://wujie-micro.github.io/doc/</a></p>
+<p>京东的micro-app <a href="https://zeroing.jd.com/micro-app/docs.html#/" target="_blank" rel="noopener">https://zeroing.jd.com/micro-app/docs.html#/</a></p>
+<p>single_spa <a href="https://single-spa.js.org/" target="_blank" rel="noopener">https://single-spa.js.org/</a></p>
+</blockquote>
+<p>最开始看的乾坤，但是其文档写的实在是，怎么说呢，惜字如金！而且对项目的侵入性很强，改的面目全非还不能跑起来，着实是恶心到人了。遂转战micro-app，顿感清新舒畅，接下来大概描述一下其使用过程。</p>
+<p>这里用vue3做演示，默认你已经安装好了最新版的脚手架 vue-cli <a href="https://cli.vuejs.org/zh/guide/" target="_blank" rel="noopener">https://cli.vuejs.org/zh/guide/</a> ，创建一个mian_app的主项目，一个child_app_1的子项目</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dff9141a832e434ba419a8c7b42df8c6~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>安装嵌入一条龙服务看文档即可 <a href="https://zeroing.jd.com/micro-app/docs.html#/zh-cn/start" target="_blank" rel="noopener">https://zeroing.jd.com/micro-app/docs.html#/zh-cn/start</a></p>
+<p>这里把需要单独配置的文件贴出来</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//main_app、child_app_1的配置文件调整，主要是子应用的跨域配置</span></span><br><span class="line"><span class="comment">//vue.config.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; defineConfig &#125; = <span class="built_in">require</span>(<span class="string">'@vue/cli-service'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = defineConfig(&#123;</span><br><span class="line">  transpileDependencies: <span class="literal">true</span>,</span><br><span class="line">  lintOnSave: <span class="literal">false</span>,   <span class="comment">//关闭eslint检查</span></span><br><span class="line">  devServer: &#123;</span><br><span class="line">    host: <span class="string">'0.0.0.0'</span>,</span><br><span class="line">    port: <span class="number">8080</span>,<span class="comment">//子应用配置为3000</span></span><br><span class="line">    headers: &#123;</span><br><span class="line">      <span class="string">'Access-Control-Allow-Origin'</span>: <span class="string">'*'</span>,<span class="comment">//子应用必须开启跨域，不然无法访问</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//main_app的router.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; createRouter, createWebHistory &#125; <span class="keyword">from</span> <span class="string">"vue-router"</span>;</span><br><span class="line"><span class="keyword">import</span> Test <span class="keyword">from</span> <span class="string">'./view/Test.vue'</span>;</span><br><span class="line"><span class="keyword">import</span> Test2 <span class="keyword">from</span> <span class="string">'./view/Test2.vue'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">""</span>,</span><br><span class="line">      redirect:<span class="string">'/test'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">'/test2'</span>, <span class="comment">// vue-router@4.x path的写法为：'/my-page/:page*'</span></span><br><span class="line">      name: <span class="string">'test2'</span>,</span><br><span class="line">      component: Test2,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">'/test/:page*'</span>, <span class="comment">// vue-router@4.x path的写法为：'/my-page/:page*'</span></span><br><span class="line">      name: <span class="string">'test'</span>,</span><br><span class="line">      component: Test,</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = createRouter(&#123;</span><br><span class="line">  history: createWebHistory(process.env.BASE_URL),</span><br><span class="line">  routes</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//这里是为了处理返路由返回时候的问题</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.__MICRO_APP_ENVIRONMENT__) &#123;</span><br><span class="line">  <span class="comment">// 如果__MICRO_APP_BASE_ROUTE__为 `/基座应用基础路由/子应用基础路由/`，则应去掉`/基座应用基础路由`</span></span><br><span class="line">  <span class="comment">// 如果对这句话不理解，可以参考案例：https://github.com/micro-zoe/micro-app-demo</span></span><br><span class="line">  <span class="keyword">const</span> realBaseRoute = <span class="built_in">window</span>.__MICRO_APP_BASE_ROUTE__</span><br><span class="line"></span><br><span class="line">  router.beforeEach(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span>.history.state?.current === <span class="string">'string'</span>) &#123;</span><br><span class="line">      <span class="built_in">window</span>.history.state.current = <span class="built_in">window</span>.history.state.current.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(realBaseRoute, <span class="string">'g'</span>), <span class="string">''</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  router.afterEach(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span>.history.state === <span class="string">'object'</span>) &#123;</span><br><span class="line">      <span class="built_in">window</span>.history.state.current = realBaseRoute +  (<span class="built_in">window</span>.history.state.current || <span class="string">''</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//main_app 入口文件调整</span></span><br><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> microApp <span class="keyword">from</span> <span class="string">'@micro-zoe/micro-app'</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span>;</span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'./router'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = createApp(App);</span><br><span class="line">app</span><br><span class="line">.use(router)</span><br><span class="line">.mount(<span class="string">'#app'</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//main_app的Test.vue</span></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;h1 <span class="class"><span class="keyword">class</span></span>=<span class="string">"red"</span>&gt;主应用基座&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">  &lt;router-link to="/</span>test2<span class="string">"&gt;test2，打开控制台看卸载监听&lt;/router-link&gt;</span></span><br><span class="line"><span class="string">  &lt;br/&gt;&lt;br/&gt;</span></span><br><span class="line"><span class="string">  &lt;button @click="</span>sendChildData<span class="string">"&gt;发送数据给子应用并监听&lt;/button&gt;</span></span><br><span class="line"><span class="string">  &lt;br/&gt;&lt;br/&gt;</span></span><br><span class="line"><span class="string">  &lt;div class="</span>childBox<span class="string">"&gt;</span></span><br><span class="line"><span class="string">    &lt;micro-app</span></span><br><span class="line"><span class="string">      name="</span>app1<span class="string">"</span></span><br><span class="line"><span class="string">      url="</span>http:<span class="comment">//localhost:3000/"</span></span><br><span class="line">      baseroute=<span class="string">"/test"</span></span><br><span class="line">      inline</span><br><span class="line">      @created=<span class="string">'created'</span></span><br><span class="line">      @beforemount=<span class="string">'beforemount'</span></span><br><span class="line">      @mounted=<span class="string">'mounted'</span></span><br><span class="line">      @unmount=<span class="string">'unmount'</span></span><br><span class="line">      @error=<span class="string">'error'</span></span><br><span class="line">      :data=<span class="string">"sendData"</span></span><br><span class="line">       @datachange=<span class="string">'handleDataChange'</span></span><br><span class="line">    &gt;&lt;<span class="regexp">/micro-app&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script setup&gt;</span></span><br><span class="line"><span class="regexp">import &#123; ref &#125; from "vue";</span></span><br><span class="line"><span class="regexp">import micro from '@micro-zoe/mi</span>cro-app<span class="string">';</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const handleDataChange = (e)=&gt;&#123;</span></span><br><span class="line"><span class="string">   console.log('</span>来自子应用的数据：<span class="string">', e.detail.data)</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const sendChildData = ()=&gt;&#123;</span></span><br><span class="line"><span class="string">  micro.setData('</span>app1<span class="string">', &#123;type: '</span>新的数据<span class="string">'&#125;)</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const sendData = ref(&#123;</span></span><br><span class="line"><span class="string">  data:'</span>基座给子应用的数据string<span class="string">'</span></span><br><span class="line"><span class="string">&#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const created  = () =&gt; &#123;</span></span><br><span class="line"><span class="string">  console.log('</span>micro-app元素被创建<span class="string">');</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const beforemount = () =&gt; &#123;</span></span><br><span class="line"><span class="string">  console.log('</span>即将被渲染<span class="string">');</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">const mounted = () =&gt; &#123;</span></span><br><span class="line"><span class="string">  console.log('</span>已经渲染完成<span class="string">');</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const unmount = () =&gt; &#123;</span></span><br><span class="line"><span class="string">  console.log('</span>已经卸载<span class="string">');</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const error = () =&gt; &#123;</span></span><br><span class="line"><span class="string">  console.log('</span>渲染出错<span class="string">');</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;style&gt;</span></span><br><span class="line"><span class="string">.childBox &#123;</span></span><br><span class="line"><span class="string">  border: 1px solid red;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&lt;/style&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//main_app的Test2.vue，主要用来测试跳转生命周期监听</span></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;h1 <span class="class"><span class="keyword">class</span></span>=<span class="string">"red"</span>&gt;其他页面&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">"vue"</span>;</span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;style&gt;</span></span><br><span class="line"><span class="regexp">.childBox &#123;</span></span><br><span class="line"><span class="regexp">  border: 1px solid red;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>分割线，子应用配置====================================================</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//chlld_app_1 入口文件</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'./public-path'</span></span><br><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> microApp <span class="keyword">from</span> <span class="string">'@micro-zoe/micro-app'</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span>;</span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'./router'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./assets/style.css'</span>;</span><br><span class="line"></span><br><span class="line">microApp.start();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = createApp(App);</span><br><span class="line">app</span><br><span class="line">.use(router)</span><br><span class="line">.use(microApp)</span><br><span class="line">.mount(<span class="string">'#app'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 子应用卸载</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'unmount'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'我是子应用，我被卸载了'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.__MICRO_APP_ENVIRONMENT__) &#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">'我在微前端环境中,基座给我的名字是'</span>,__MICRO_APP_NAME__)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">dataListener</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'来自基座应用的数据'</span>, data);</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'数据被更新了'</span>,<span class="built_in">window</span>.microApp.getData());</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'window.microApp==&gt;'</span>,<span class="built_in">window</span>.microApp)</span><br><span class="line">  <span class="built_in">window</span>.microApp.addDataListener(dataListener)</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//子应用 './public-path' 路径判断文件</span></span><br><span class="line"><span class="comment">// __MICRO_APP_ENVIRONMENT__和__MICRO_APP_PUBLIC_PATH__是由micro-app注入的全局变量</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.__MICRO_APP_ENVIRONMENT__) &#123;</span><br><span class="line">    <span class="comment">// eslint-disable-next-line</span></span><br><span class="line">    __webpack_public_path__ = <span class="built_in">window</span>.__MICRO_APP_PUBLIC_PATH__</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//router.js文件</span></span><br><span class="line"><span class="keyword">import</span> &#123; createRouter, createWebHistory &#125; <span class="keyword">from</span> <span class="string">"vue-router"</span>;</span><br><span class="line"><span class="keyword">import</span> Test <span class="keyword">from</span> <span class="string">'./view/Test.vue'</span>;</span><br><span class="line"><span class="keyword">import</span> Home <span class="keyword">from</span> <span class="string">'./view/Home.vue'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">""</span>,</span><br><span class="line">      redirect:<span class="string">"/home"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">"/home"</span>,</span><br><span class="line">      name: <span class="string">'home'</span>,</span><br><span class="line">      component: Home,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">// 👇 非严格匹配，/my-page/* 都指向 MyPage 页面</span></span><br><span class="line">      path: <span class="string">'/app1/:page*'</span>, <span class="comment">// vue-router@4.x path的写法为：'/my-page/:page*'</span></span><br><span class="line">      name: <span class="string">'app1'</span>,</span><br><span class="line">      component: Test,</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = createRouter(&#123;</span><br><span class="line">  history: createWebHistory(<span class="built_in">window</span>.__MICRO_APP_BASE_ROUTE__ || process.env.BASE_URL),</span><br><span class="line">  routes</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// view/Home.vue 文件</span></span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;h1 <span class="class"><span class="keyword">class</span></span>=<span class="string">"red"</span>&gt;子应用 Home&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">  &lt;br/</span>&gt;<span class="xml"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span></span><br><span class="line">  &lt;button @click=<span class="string">"callBase"</span>&gt;向基座发送数据&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">const</span> data = <span class="built_in">window</span>.microApp.getData();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'我在子应用获取到基座数据'</span>,data);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> callBase = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">window</span>.microApp.dispatch(&#123;<span class="attr">type</span>: <span class="string">'我是子应用发送过来的数据'</span>&#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// view/Test.vue文件，用于跳转测试</span></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;h1 <span class="class"><span class="keyword">class</span></span>=<span class="string">"red"</span>&gt;子应用 app1&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>准备就绪,启动基座与子应用服务，准备起飞=================================================</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/455a16547e014877bfde956a1d754385~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>控制台可以看到通信信息</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/894c3ae1b543482c9c9dcc10c4817c96~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+
+  </article>
+  <footer class="f-cf">
+    
+      <a href="/2022/11/08/%E6%98%AF%E9%87%91%E5%AD%90%E6%80%BB%E4%BC%9A%E8%8A%B1%E5%85%89%EF%BC%8C%E5%85%B3%E4%BA%8E%E5%BD%93%E4%B8%8B%E6%84%8F%E4%B9%89%E7%9A%84%E6%B6%88%E8%A7%A3%E4%B8%8E%E8%BF%BD%E5%AF%BB/" class="link f-fl">⟵是金子总会花光，关于当下意义的消解与追寻</a>
+    
+    
+      <a href="/2022/10/10/express-ts%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="link f-fr">Express+ts开发环境搭建⟶</a>
+    
+  </footer>
+</section></div>
+    <footer id="footer" class="f-cf">
+  707463973@qq.com
+  
+    
+      
+        · <a href="https://github.com/BiscuitCoder" target="_blank" class="nav-icn">GitHub</a>
+      
+    
+  
+  <span class="copyright">All rights reserved @Biscuit Blog</span>
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+
+  <!-- <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1280589363'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1280589363%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script> -->
+  
+</footer>
+  </div>
+</body>
+</html>
